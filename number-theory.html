@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数论公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">数论分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#basic-number-theory" class="nav-link active">
+                            <i class="fa fa-calculator nav-icon"></i>
+                            <span>基础数论</span>
+                        </a>
+                        <a href="#prime-numbers" class="nav-link">
+                            <i class="fa fa-key nav-icon"></i>
+                            <span>素数理论</span>
+                        </a>
+                        <a href="#congruences" class="nav-link">
+                            <i class="fa fa-balance-scale nav-icon"></i>
+                            <span>同余理论</span>
+                        </a>
+                        <a href="#diophantine-equations" class="nav-link">
+                            <i class="fa fa-puzzle-piece nav-icon"></i>
+                            <span>丢番图方程</span>
+                        </a>
+                        <a href="#analytic-number-theory" class="nav-link">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>解析数论</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">数论公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 基础数论 -->
+                    <section id="basic-number-theory" class="mb-10">
+                        <h2 class="section-title">基础数论</h2>
+                        <div class="space-y-6">
+                            <!-- 整除性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">整除性</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ a \mid b \iff \exists k \in \mathbb{Z}, b = ak \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \mid b \text{ 且 } a \mid c \implies a \mid (b + c) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \mid b \implies a \mid bc \text{ 对任意 } c \in \mathbb{Z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \mid b \text{ 且 } b \mid c \implies a \mid c \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">整除的基本性质。符号 \(a \mid b\) 表示a整除b，即b是a的倍数。</p>
+                            </div>
+                            
+                            <!-- 最大公约数和最小公倍数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">最大公约数和最小公倍数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \gcd(a, b) = \min \{ d \in \mathbb{N} : d \mid a \text{ 且 } d \mid b \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{lcm}(a, b) = \max \{ m \in \mathbb{N} : a \mid m \text{ 且 } b \mid m \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \cdot b = \gcd(a, b) \cdot \text{lcm}(a, b) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \gcd(a, b) = \gcd(b, a \mod b) \quad (\text{欧几里得算法}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">最大公约数(gcd)和最小公倍数(lcm)的定义及性质。欧几里得算法是计算最大公约数的有效方法。</p>
+                            </div>
+                            
+                            <!-- 素因数分解 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">素因数分解</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ d(n) = (e_1 + 1)(e_2 + 1) \cdots (e_k + 1) \quad (\text{因数个数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sigma(n) = \frac{p_1^{e_1+1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2+1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k+1} - 1}{p_k - 1} \quad (\text{因数和}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">正整数的素因数分解及相关函数。其中 \(p_1, p_2, \ldots, p_k\) 是不同的素数，\(e_1, e_2, \ldots, e_k\) 是正整数。</p>
+                            </div>
+                            
+                            <!-- 贝祖定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">贝祖定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \forall a, b \in \mathbb{Z}, \exists x, y \in \mathbb{Z}, ax + by = \gcd(a, b) \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">贝祖定理指出，任意两个整数的最大公约数可以表示为这两个整数的线性组合。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 素数理论 -->
+                    <section id="prime-numbers" class="mb-10">
+                        <h2 class="section-title">素数理论</h2>
+                        <div class="space-y-6">
+                            <!-- 素数定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">素数定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ p \text{ 是素数} \iff \text{只有 } 1 \text{ 和 } p \text{ 能整除 } p \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">素数的定义：大于1的自然数，除了1和它本身外，不能被其他自然数整除的数。</p>
+                            </div>
+                            
+                            <!-- 素数定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">素数定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \pi(x) \sim \frac{x}{\ln x} \]
+                                    </div>
+                                    <div class="text-center text-lg mt-3">
+                                        \[ \lim_{x \to \infty} \frac{\pi(x) \ln x}{x} = 1 \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">素数定理描述了小于等于x的素数个数π(x)的渐近行为。它表明π(x)大约等于x/ln x。</p>
+                            </div>
+                            
+                            <!-- 埃拉托斯特尼筛法 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">埃拉托斯特尼筛法</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        <p>1. 列出从2到n的所有整数</p>
+                                        <p>2. 从列表中找到最小的未标记的数p，它是素数</p>
+                                        <p>3. 标记p的所有倍数（2p, 3p, ...）</p>
+                                        <p>4. 重复步骤2和3，直到所有数都被标记或检查过</p>
+                                        <p>5. 未被标记的数都是素数</p>
+                                    </div>
+                                </div>
+                                <p class="formula-description">埃拉托斯特尼筛法是一种古老而有效的找出小于等于给定整数n的所有素数的算法。</p>
+                            </div>
+                            
+                            <!-- 梅森素数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">梅森素数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ M_p = 2^p - 1 \]
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        \[ \text{若 } M_p \text{ 是素数，则 } p \text{ 必须是素数} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">梅森素数是形如Mₚ = 2ᵖ - 1的素数，其中p本身是素数。注意，并不是所有素数p都能使Mₚ成为素数。</p>
+                            </div>
+                            
+                            <!-- 费马素数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">费马素数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ F_n = 2^{2^n} + 1 \]
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        \[ F_0 = 3, F_1 = 5, F_2 = 17, F_3 = 257, F_4 = 65537 \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">费马素数是形如Fₙ = 2²ⁿ + 1的素数。目前已知的费马素数只有F₀到F₄五个。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 同余理论 -->
+                    <section id="congruences" class="mb-10">
+                        <h2 class="section-title">同余理论</h2>
+                        <div class="space-y-6">
+                            <!-- 同余定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">同余定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ a \equiv b \pmod{m} \iff m \mid (a - b) \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">同余的定义：如果a和b除以m的余数相同，则称a和b模m同余，记作a ≡ b (mod m)。</p>
+                            </div>
+                            
+                            <!-- 同余性质 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">同余性质</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ a \equiv a \pmod{m} \quad (\text{自反性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \equiv b \pmod{m} \implies b \equiv a \pmod{m} \quad (\text{对称性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \equiv b \pmod{m} \text{ 且 } b \equiv c \pmod{m} \implies a \equiv c \pmod{m} \quad (\text{传递性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \equiv b \pmod{m} \text{ 且 } c \equiv d \pmod{m} \implies a + c \equiv b + d \pmod{m} \quad (\text{加法保持}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \equiv b \pmod{m} \text{ 且 } c \equiv d \pmod{m} \implies ac \equiv bd \pmod{m} \quad (\text{乘法保持}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a \equiv b \pmod{m} \implies ka \equiv kb \pmod{m} \quad (\text{数乘保持}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">同余关系的基本性质，包括自反性、对称性、传递性以及加法、乘法和数乘的保持性。</p>
+                            </div>
+                            
+                            <!-- 欧拉定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">欧拉定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \text{若 } \gcd(a, m) = 1 \text{，则 } a^{\phi(m)} \equiv 1 \pmod{m} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">欧拉定理：如果a和m互质，则a的欧拉函数φ(m)次方模m等于1。其中φ(m)是小于等于m且与m互质的正整数的个数。</p>
+                            </div>
+                            
+                            <!-- 费马小定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">费马小定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \text{若 } p \text{ 是素数且 } p \nmid a \text{，则 } a^{p-1} \equiv 1 \pmod{p} \]
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        \[ \text{对任意整数 } a \text{，有 } a^p \equiv a \pmod{p} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">费马小定理：如果p是素数且a不被p整除，则a的p-1次方模p等于1。这是欧拉定理的一个特例，当m是素数p时，φ(p) = p-1。</p>
+                            </div>
+                            
+                            <!-- 中国剩余定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">中国剩余定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        <p>设m₁, m₂, ..., mₖ是两两互质的正整数，则同余方程组：</p>
+                                        <div class="space-y-2 mt-3">
+                                            <div class="text-center">
+                                                \[ x \equiv a_1 \pmod{m_1} \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ x \equiv a_2 \pmod{m_2} \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \vdots \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ x \equiv a_k \pmod{m_k} \]
+                                            </div>
+                                        </div>
+                                        <p class="mt-3">在模M = m₁m₂⋯mₖ下有唯一解：</p>
+                                        <div class="text-center mt-2">
+                                            \[ x \equiv \sum_{i=1}^{k} a_i M_i N_i \pmod{M} \]
+                                        </div>
+                                        <p class="mt-2">其中Mᵢ = M/mᵢ，Nᵢ是Mᵢ模mᵢ的逆元，即MᵢNᵢ ≡ 1 (mod mᵢ)</p>
+                                    </div>
+                                </div>
+                                <p class="formula-description">中国剩余定理（孙子定理）：如果m₁, m₂, ..., mₖ是两两互质的正整数，那么同余方程组在模M = m₁m₂⋯mₖ下有唯一解。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

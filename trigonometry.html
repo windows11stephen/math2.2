@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角函数公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">三角函数分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#basic-trig" class="nav-link active">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <span>基本三角函数</span>
+                        </a>
+                        <a href="#trig-identities" class="nav-link">
+                            <i class="fa fa-exchange nav-icon"></i>
+                            <span>三角恒等式</span>
+                        </a>
+                        <a href="#triangle-theorems" class="nav-link">
+                            <i class="fa fa-caret-up nav-icon"></i>
+                            <span>三角形定理</span>
+                        </a>
+                        <a href="#inverse-trig" class="nav-link">
+                            <i class="fa fa-arrows-alt nav-icon"></i>
+                            <span>反三角函数</span>
+                        </a>
+                        <a href="#hyperbolic-functions" class="nav-link">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>双曲函数</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">三角函数公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 基本三角函数 -->
+                    <section id="basic-trig" class="mb-10">
+                        <h2 class="section-title">基本三角函数</h2>
+                        <div class="space-y-6">
+                            <!-- 三角函数定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">三角函数定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin\theta = \frac{对边}{斜边} = \frac{y}{r} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\theta = \frac{邻边}{斜边} = \frac{x}{r} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan\theta = \frac{对边}{邻边} = \frac{y}{x} = \frac{\sin\theta}{\cos\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cot\theta = \frac{邻边}{对边} = \frac{x}{y} = \frac{\cos\theta}{\sin\theta} = \frac{1}{\tan\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sec\theta = \frac{斜边}{邻边} = \frac{r}{x} = \frac{1}{\cos\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \csc\theta = \frac{斜边}{对边} = \frac{r}{y} = \frac{1}{\sin\theta} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角函数的基本定义，基于直角三角形的边长比例或单位圆上点的坐标。其中 \(x, y\) 是点的坐标，\(r\) 是点到原点的距离。</p>
+                            </div>
+                            
+                            <!-- 特殊角的三角函数值 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">特殊角的三角函数值</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full divide-y divide-gray-300">
+                                            <thead>
+                                                <tr>
+                                                    <th class="px-4 py-2 text-center">角度</th>
+                                                    <th class="px-4 py-2 text-center">弧度</th>
+                                                    <th class="px-4 py-2 text-center">sin</th>
+                                                    <th class="px-4 py-2 text-center">cos</th>
+                                                    <th class="px-4 py-2 text-center">tan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-200">
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">0°</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">1</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">30°</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\pi}{6}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{1}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\sqrt{3}}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\sqrt{3}}{3}\)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">45°</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\pi}{4}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\sqrt{2}}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\sqrt{2}}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">60°</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\pi}{3}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\sqrt{3}}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{1}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">\(\sqrt{3}\)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">90°</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{\pi}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">1</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">不存在</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">180°</td>
+                                                    <td class="px-4 py-2 text-center">\(\pi\)</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">-1</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">270°</td>
+                                                    <td class="px-4 py-2 text-center">\(\frac{3\pi}{2}\)</td>
+                                                    <td class="px-4 py-2 text-center">-1</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">不存在</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 text-center">360°</td>
+                                                    <td class="px-4 py-2 text-center">\(2\pi\)</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                    <td class="px-4 py-2 text-center">1</td>
+                                                    <td class="px-4 py-2 text-center">0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见特殊角的三角函数值，这些值在解决三角函数问题时经常用到。</p>
+                            </div>
+                            
+                            <!-- 三角函数的周期性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">三角函数的周期性</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin(\theta + 2\pi) = \sin\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(\theta + 2\pi) = \cos\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(\theta + \pi) = \tan\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cot(\theta + \pi) = \cot\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sec(\theta + 2\pi) = \sec\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \csc(\theta + 2\pi) = \csc\theta \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角函数的周期性性质。正弦、余弦、正割和余割函数的周期是 \(2\pi\)，而正切和余切函数的周期是 \(\pi\)。</p>
+                            </div>
+                            
+                            <!-- 三角函数的奇偶性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">三角函数的奇偶性</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin(-\theta) = -\sin\theta \quad (\text{奇函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(-\theta) = \cos\theta \quad (\text{偶函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(-\theta) = -\tan\theta \quad (\text{奇函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cot(-\theta) = -\cot\theta \quad (\text{奇函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sec(-\theta) = \sec\theta \quad (\text{偶函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \csc(-\theta) = -\csc\theta \quad (\text{奇函数}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角函数的奇偶性。余弦和正割是偶函数，其他三角函数都是奇函数。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 三角恒等式 -->
+                    <section id="trig-identities" class="mb-10">
+                        <h2 class="section-title">三角恒等式</h2>
+                        <div class="space-y-6">
+                            <!-- 基本恒等式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">基本恒等式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin^2\theta + \cos^2\theta = 1 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ 1 + \tan^2\theta = \sec^2\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ 1 + \cot^2\theta = \csc^2\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan\theta = \frac{\sin\theta}{\cos\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cot\theta = \frac{\cos\theta}{\sin\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sec\theta = \frac{1}{\cos\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \csc\theta = \frac{1}{\sin\theta} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角函数的基本恒等式，包括勾股恒等式和倒数关系。</p>
+                            </div>
+                            
+                            <!-- 和角公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">和角公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin(\alpha - \beta) = \sin\alpha\cos\beta - \cos\alpha\sin\beta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(\alpha + \beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(\alpha - \beta) = \cos\alpha\cos\beta + \sin\alpha\sin\beta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(\alpha - \beta) = \frac{\tan\alpha - \tan\beta}{1 + \tan\alpha\tan\beta} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">和角公式用于计算两个角的和或差的三角函数值。</p>
+                            </div>
+                            
+                            <!-- 倍角公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">倍角公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \sin(2\theta) = 2\sin\theta\cos\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(2\theta) = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(2\theta) = \frac{2\tan\theta}{1 - \tan^2\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin(3\theta) = 3\sin\theta - 4\sin^3\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos(3\theta) = 4\cos^3\theta - 3\cos\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan(3\theta) = \frac{3\tan\theta - \tan^3\theta}{1 - 3\tan^2\theta} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">倍角公式用于计算角的倍数的三角函数值。</p>
+                            </div>
+                            
+                            <!-- 半角公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">半角公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \sin\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 - \cos\theta}{2}} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 + \cos\theta}{2}} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 - \cos\theta}{1 + \cos\theta}} = \frac{1 - \cos\theta}{\sin\theta} = \frac{\sin\theta}{1 + \cos\theta} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">半角公式用于计算角的一半的三角函数值。符号取决于 \(\frac{\theta}{2}\) 所在的象限。</p>
+                            </div>
+                            
+                            <!-- 和差化积公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">和差化积公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin\alpha + \sin\beta = 2\sin\left(\frac{\alpha + \beta}{2}\right)\cos\left(\frac{\alpha - \beta}{2}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin\alpha - \sin\beta = 2\cos\left(\frac{\alpha + \beta}{2}\right)\sin\left(\frac{\alpha - \beta}{2}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\alpha + \cos\beta = 2\cos\left(\frac{\alpha + \beta}{2}\right)\cos\left(\frac{\alpha - \beta}{2}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\alpha - \cos\beta = -2\sin\left(\frac{\alpha + \beta}{2}\right)\sin\left(\frac{\alpha - \beta}{2}\right) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">和差化积公式用于将两个三角函数的和或差转换为乘积形式。</p>
+                            </div>
+                            
+                            <!-- 积化和差公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积化和差公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin\alpha\cos\beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)] \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\alpha\sin\beta = \frac{1}{2}[\sin(\alpha + \beta) - \sin(\alpha - \beta)] \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos\alpha\cos\beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)] \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin\alpha\sin\beta = \frac{1}{2}[\cos(\alpha - \beta) - \cos(\alpha + \beta)] \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">积化和差公式用于将两个三角函数的乘积转换为和或差的形式。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 三角形定理 -->
+                    <section id="triangle-theorems" class="mb-10">
+                        <h2 class="section-title">三角形定理</h2>
+                        <div class="space-y-6">
+                            <!-- 正弦定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">正弦定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">正弦定理描述了三角形的边长与对角的正弦值之间的关系。其中 \(a, b, c\) 是三角形的边长，\(A, B, C\) 分别是对应边的对角，\(R\) 是三角形的外接圆半径。</p>
+                            </div>
+                            
+                            <!-- 余弦定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">余弦定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ a^2 = b^2 + c^2 - 2bc\cos A \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ b^2 = a^2 + c^2 - 2ac\cos B \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ c^2 = a^2 + b^2 - 2ab\cos C \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">余弦定理描述了三角形的边长与夹角的余弦值之间的关系。其中 \(a, b, c\) 是三角形的边长，\(A, B, C\) 分别是对应边的对角。</p>
+                            </div>
+                            
+                            <!-- 三角形面积公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">三角形面积公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ A = \frac{1}{2}bh \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A = \frac{1}{2}ab\sin C = \frac{1}{2}bc\sin A = \frac{1}{2}ac\sin B \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A = \sqrt{s(s-a)(s-b)(s-c)} \quad (\text{海伦公式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A = \frac{abc}{4R} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A = rs \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角形面积的多种计算公式。其中 \(b\) 是底边长，\(h\) 是高，\(a, b, c\) 是三角形的边长，\(A, B, C\) 分别是对应边的对角，\(s = \frac{a+b+c}{2}\) 是半周长，\(R\) 是外接圆半径，\(r\) 是内切圆半径。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

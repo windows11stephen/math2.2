@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复变函数公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">复变函数分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#complex-numbers" class="nav-link active">
+                            <i class="fa fa-calculator nav-icon"></i>
+                            <span>复数基础</span>
+                        </a>
+                        <a href="#complex-functions" class="nav-link">
+                            <i class="fa fa-line-chart nav-icon"></i>
+                            <span>复变函数</span>
+                        </a>
+                        <a href="#complex-integration" class="nav-link">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>复积分</span>
+                        </a>
+                        <a href="#series-expansion" class="nav-link">
+                            <i class="fa fa-sitemap nav-icon"></i>
+                            <span>级数展开</span>
+                        </a>
+                        <a href="#residue-theorem" class="nav-link">
+                            <i class="fa fa-magic nav-icon"></i>
+                            <span>留数定理</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">复变函数公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 复数基础 -->
+                    <section id="complex-numbers" class="mb-10">
+                        <h2 class="section-title">复数基础</h2>
+                        <div class="space-y-6">
+                            <!-- 复数表示 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复数表示</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ z = a + bi \quad (\text{代数形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z = r(\cos\theta + i\sin\theta) \quad (\text{三角形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z = re^{i\theta} \quad (\text{指数形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ |z| = r = \sqrt{a^2 + b^2} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的三种表示形式：代数形式、三角形式和指数形式，以及复数的模。</p>
+                            </div>
+                            
+                            <!-- 复数运算 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复数运算</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ (a + bi) + (c + di) = (a + c) + (b + d)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + bi) - (c + di) = (a - c) + (b - d)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + bi)(c + di) = (ac - bd) + (ad + bc)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2}i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{z_1}{z_2} = \frac{r_1}{r_2} e^{i(\theta_1 - \theta_2)} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的基本运算，包括加减乘除以及用指数形式表示的乘除运算。</p>
+                            </div>
+                            
+                            <!-- 复数的幂与根 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复数的幂与根</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ z^n = r^n e^{in\theta} = r^n(\cos n\theta + i\sin n\theta) \quad (\text{棣莫弗定理}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sqrt[n]{z} = \sqrt[n]{r} e^{i(\theta + 2k\pi)/n}, \quad k = 0, 1, \ldots, n-1 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sqrt[n]{z} = \sqrt[n]{r} \left( \cos\frac{\theta + 2k\pi}{n} + i\sin\frac{\theta + 2k\pi}{n} \right), \quad k = 0, 1, \ldots, n-1 \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的幂运算（棣莫弗定理）和开根运算。复数的n次根有n个不同的值。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 复变函数 -->
+                    <section id="complex-functions" class="mb-10">
+                        <h2 class="section-title">复变函数</h2>
+                        <div class="space-y-6">
+                            <!-- 解析函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">解析函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ f(z) = u(x, y) + iv(x, y) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \quad (\text{柯西-黎曼方程}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i\frac{\partial u}{\partial y} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复变函数的实部和虚部表示，以及判断函数解析的柯西-黎曼方程。</p>
+                            </div>
+                            
+                            <!-- 初等复变函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">初等复变函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ e^z = e^x(\cos y + i\sin y) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin z = \frac{e^{iz} - e^{-iz}}{2i} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos z = \frac{e^{iz} + e^{-iz}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sinh z = \frac{e^z - e^{-z}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cosh z = \frac{e^z + e^{-z}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log z = \ln|z| + i\arg z = \ln r + i(\theta + 2k\pi) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z^a = e^{a\log z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan z = \frac{\sin z}{\cos z} = \frac{e^{iz} - e^{-iz}}{i(e^{iz} + e^{-iz})} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见的初等复变函数，包括指数函数、三角函数、双曲函数、对数函数和幂函数。</p>
+                            </div>
+                            
+                            <!-- 调和函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">调和函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \nabla^2 v = \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ v(x, y) = \int \frac{\partial u}{\partial x} dy + C(x) \quad (\text{共轭调和函数}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">调和函数的拉普拉斯方程，以及如何从已知的调和函数求出其共轭调和函数。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 复积分 -->
+                    <section id="complex-integration" class="mb-10">
+                        <h2 class="section-title">复积分</h2>
+                        <div class="space-y-6">
+                            <!-- 复积分定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复积分定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \int_C f(z) dz = \lim_{n \to \infty} \sum_{k=1}^{n} f(z_k^*)(z_k - z_{k-1}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_C f(z) dz = \int_C (u + iv)(dx + idy) = \int_C (udx - vdy) + i\int_C (vdx + udy) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \left| \int_C f(z) dz \right| \leq \int_C |f(z)| |dz| \leq M \cdot L \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复积分的定义、分解为实积分的表达式，以及积分的模长估计。其中M是|f(z)|在路径C上的最大值，L是路径C的长度。</p>
+                            </div>
+                            
+                            <!-- 柯西积分定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">柯西积分定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \oint_C f(z) dz = 0 \]
+                                    </div>
+                                    <p class="text-center mt-3">其中f(z)在单连通区域D内解析，C是D内的简单闭曲线</p>
+                                </div>
+                                <p class="formula-description">柯西积分定理：如果f(z)在单连通区域D内解析，那么沿D内的任意简单闭曲线C的积分都等于0。</p>
+                            </div>
+                            
+                            <!-- 柯西积分公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">柯西积分公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center text-xl">
+                                            \[ f(a) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - a} dz \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f^{(n)}(a) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - a)^{n+1}} dz \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">柯西积分公式及其推广，用于计算解析函数在某点的值和各阶导数。其中C是包围点a的简单闭曲线，f(z)在包含C及其内部的区域内解析。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

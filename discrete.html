@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离散数学公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">离散数学分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#set-theory" class="nav-link active">
+                            <i class="fa fa-object-group nav-icon"></i>
+                            <span>集合论</span>
+                        </a>
+                        <a href="#logic" class="nav-link">
+                            <i class="fa fa-code-fork nav-icon"></i>
+                            <span>数理逻辑</span>
+                        </a>
+                        <a href="#relations-functions" class="nav-link">
+                            <i class="fa fa-exchange nav-icon"></i>
+                            <span>关系与函数</span>
+                        </a>
+                        <a href="#graph-theory" class="nav-link">
+                            <i class="fa fa-share-alt nav-icon"></i>
+                            <span>图论</span>
+                        </a>
+                        <a href="#combinatorics" class="nav-link">
+                            <i class="fa fa-cubes nav-icon"></i>
+                            <span>组合数学</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">离散数学公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 集合论 -->
+                    <section id="set-theory" class="mb-10">
+                        <h2 class="section-title">集合论</h2>
+                        <div class="space-y-6">
+                            <!-- 集合运算 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">集合运算</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ A \cup B = \{ x \mid x \in A \text{ 或 } x \in B \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A \cap B = \{ x \mid x \in A \text{ 且 } x \in B \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A - B = \{ x \mid x \in A \text{ 且 } x \notin B \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \overline{A} = \{ x \mid x \notin A \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A \times B = \{ (a, b) \mid a \in A \text{ 且 } b \in B \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \mathcal{P}(A) = \{ S \mid S \subseteq A \} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">集合的基本运算，包括并集、交集、差集、补集、笛卡尔积和幂集。</p>
+                            </div>
+                            
+                            <!-- 集合恒等式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">集合恒等式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ A \cup A = A, \quad A \cap A = A \quad (\text{幂等律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A \cup B = B \cup A, \quad A \cap B = B \cap A \quad (\text{交换律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (A \cup B) \cup C = A \cup (B \cup C) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (A \cap B) \cap C = A \cap (B \cap C) \quad (\text{结合律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \quad (\text{分配律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \overline{A \cup B} = \overline{A} \cap \overline{B} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \overline{A \cap B} = \overline{A} \cup \overline{B} \quad (\text{德摩根律}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">集合运算的基本恒等式，包括幂等律、交换律、结合律、分配律和德摩根律。</p>
+                            </div>
+                            
+                            <!-- 容斥原理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">容斥原理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ |A \cup B| = |A| + |B| - |A \cap B| \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C| \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \left| \bigcup_{i=1}^{n} A_i \right| = \sum_{i=1}^{n} |A_i| - \sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| - \cdots + (-1)^{n+1} |A_1 \cap A_2 \cap \cdots \cap A_n| \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">容斥原理用于计算多个集合的并集的元素个数。它通过交替加减交集的大小来避免重复计数。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 数理逻辑 -->
+                    <section id="logic" class="mb-10">
+                        <h2 class="section-title">数理逻辑</h2>
+                        <div class="space-y-6">
+                            <!-- 命题逻辑 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">命题逻辑</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \neg p \quad (\text{否定}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \wedge q \quad (\text{合取}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \vee q \quad (\text{析取}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \rightarrow q \quad (\text{蕴含}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \leftrightarrow q \quad (\text{等价}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \oplus q \quad (\text{异或}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">命题逻辑的基本连接词，包括否定、合取、析取、蕴含、等价和异或。</p>
+                            </div>
+                            
+                            <!-- 逻辑等价式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">逻辑等价式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \neg \neg p \equiv p \quad (\text{双重否定律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \wedge q \equiv q \wedge p, \quad p \vee q \equiv q \vee p \quad (\text{交换律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \wedge (q \wedge r) \equiv (p \wedge q) \wedge r \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \vee (q \vee r) \equiv (p \vee q) \vee r \quad (\text{结合律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \wedge (q \vee r) \equiv (p \wedge q) \vee (p \wedge r) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \vee (q \wedge r) \equiv (p \vee q) \wedge (p \vee r) \quad (\text{分配律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \neg (p \wedge q) \equiv \neg p \vee \neg q \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \neg (p \vee q) \equiv \neg p \wedge \neg q \quad (\text{德摩根律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \rightarrow q \equiv \neg p \vee q \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ p \leftrightarrow q \equiv (p \rightarrow q) \wedge (q \rightarrow p) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">命题逻辑中的基本等价式，包括双重否定律、交换律、结合律、分配律、德摩根律以及蕴含和等价的等价表达式。</p>
+                            </div>
+                            
+                            <!-- 谓词逻辑 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">谓词逻辑</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \forall x P(x) \quad (\text{全称量词}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \exists x P(x) \quad (\text{存在量词}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \neg \forall x P(x) \equiv \exists x \neg P(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \neg \exists x P(x) \equiv \forall x \neg P(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall x (P(x) \wedge Q(x)) \equiv \forall x P(x) \wedge \forall x Q(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \exists x (P(x) \vee Q(x)) \equiv \exists x P(x) \vee \exists x Q(x) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">谓词逻辑的基本概念和等价式，包括全称量词、存在量词及其否定，以及量词与逻辑连接词的交互。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 关系与函数 -->
+                    <section id="relations-functions" class="mb-10">
+                        <h2 class="section-title">关系与函数</h2>
+                        <div class="space-y-6">
+                            <!-- 关系的性质 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">关系的性质</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \forall a \in A, (a, a) \in R \quad (\text{自反性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b \in A, (a, b) \in R \implies (b, a) \in R \quad (\text{对称性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b, c \in A, ((a, b) \in R \wedge (b, c) \in R) \implies (a, c) \in R \quad (\text{传递性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b \in A, ((a, b) \in R \wedge (b, a) \in R) \implies a = b \quad (\text{反对称性}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">二元关系的基本性质，包括自反性、对称性、传递性和反对称性。</p>
+                            </div>
+                            
+                            <!-- 关系的运算 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">关系的运算</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ R^{-1} = \{ (b, a) \mid (a, b) \in R \} \quad (\text{逆关系}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ R \circ S = \{ (a, c) \mid \exists b, (a, b) \in R \wedge (b, c) \in S \} \quad (\text{关系复合}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ R \cup S = \{ (a, b) \mid (a, b) \in R \text{ 或 } (a, b) \in S \} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ R \cap S = \{ (a, b) \mid (a, b) \in R \text{ 且 } (a, b) \in S \} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">关系的基本运算，包括逆关系、关系复合、关系的并和交。</p>
+                            </div>
+                            
+                            <!-- 函数的性质 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">函数的性质</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \forall a_1, a_2 \in A, f(a_1) = f(a_2) \implies a_1 = a_2 \quad (\text{单射}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall b \in B, \exists a \in A, f(a) = b \quad (\text{满射}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{既是单射又是满射} \quad (\text{双射}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (f \circ g)(a) = f(g(a)) \quad (\text{函数复合}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">函数的基本性质，包括单射、满射、双射的定义以及函数复合的概念。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

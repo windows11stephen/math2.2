@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代数公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">代数分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#basic-algebra" class="nav-link active">
+                            <i class="fa fa-calculator nav-icon"></i>
+                            <span>基础代数</span>
+                        </a>
+                        <a href="#linear-algebra" class="nav-link">
+                            <i class="fa fa-table nav-icon"></i>
+                            <span>线性代数</span>
+                        </a>
+                        <a href="#abstract-algebra" class="nav-link">
+                            <i class="fa fa-sitemap nav-icon"></i>
+                            <span>抽象代数</span>
+                        </a>
+                        <a href="#number-theory" class="nav-link">
+                            <i class="fa fa-sort-numeric-asc nav-icon"></i>
+                            <span>数论</span>
+                        </a>
+                        <a href="#combinatorics" class="nav-link">
+                            <i class="fa fa-random nav-icon"></i>
+                            <span>组合数学</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">代数公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 基础代数 -->
+                    <section id="basic-algebra" class="mb-10">
+                        <h2 class="section-title">基础代数</h2>
+                        <div class="space-y-6">
+                            <!-- 二次公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">二次公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">用于求解二次方程 \(ax^2 + bx + c = 0\) 的根，其中 \(a \neq 0\)。判别式 \(D = b^2 - 4ac\) 决定了根的性质：\(D > 0\) 时有两个不同实根，\(D = 0\) 时有一个重根，\(D < 0\) 时有两个共轭复根。</p>
+                            </div>
+                            
+                            <!-- 因式分解公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">因式分解公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ a^2 - b^2 = (a + b)(a - b) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a^3 - b^3 = (a - b)(a^2 + ab + b^2) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a^3 + b^3 = (a + b)(a^2 - ab + b^2) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + b)^2 = a^2 + 2ab + b^2 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a - b)^2 = a^2 - 2ab + b^2 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常用的代数因式分解公式，用于简化表达式和解方程。</p>
+                            </div>
+                            
+                            <!-- 二项式定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">二项式定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k \]
+                                    </div>
+                                    <div class="text-center text-lg mt-3">
+                                        \[ \binom{n}{k} = \frac{n!}{k!(n-k)!} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">二项式定理描述了二项式的幂展开式，其中 \(\binom{n}{k}\) 是二项式系数，表示从n个元素中选取k个的组合数。</p>
+                            </div>
+                            
+                            <!-- 对数公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">对数公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \log_a(xy) = \log_a x + \log_a y \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a\left(\frac{x}{y}\right) = \log_a x - \log_a y \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a(x^n) = n \log_a x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a x = \frac{\log_b x}{\log_b a} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a^{\log_a x} = x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a 1 = 0 \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">对数的基本性质和运算规则，适用于任何底数 \(a > 0, a \neq 1\)。</p>
+                            </div>
+                            
+                            <!-- 指数公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">指数公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ a^m \cdot a^n = a^{m+n} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{a^m}{a^n} = a^{m-n} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a^m)^n = a^{mn} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (ab)^n = a^n b^n \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \left(\frac{a}{b}\right)^n = \frac{a^n}{b^n} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a^0 = 1 \quad (a \neq 0) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">指数的基本运算规则，适用于任何实数 \(a, b \neq 0\) 和整数 \(m, n\)。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 线性代数 -->
+                    <section id="linear-algebra" class="mb-10">
+                        <h2 class="section-title">线性代数</h2>
+                        <div class="space-y-6">
+                            <!-- 矩阵运算 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">矩阵运算</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ (A + B)_{ij} = A_{ij} + B_{ij} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (kA)_{ij} = k \cdot A_{ij} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (AB)_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (A^T)_{ij} = A_{ji} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矩阵的基本运算，包括加法、标量乘法、矩阵乘法和转置。其中 \(A^T\) 表示矩阵 \(A\) 的转置。</p>
+                            </div>
+                            
+                            <!-- 行列式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">行列式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \det(A) = |A| = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^{n} A_{i,\sigma(i)} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \det(AB) = \det(A) \det(B) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \det(A^T) = \det(A) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \det(kA) = k^n \det(A) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">行列式的定义和基本性质，其中 \(S_n\) 是n次对称群，\(\text{sgn}(\sigma)\) 是置换 \(\sigma\) 的符号。</p>
+                            </div>
+                            
+                            <!-- 特征值和特征向量 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">特征值和特征向量</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ A \mathbf{v} = \lambda \mathbf{v} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \det(A - \lambda I) = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{tr}(A) = \sum_{i=1}^{n} A_{ii} = \sum_{i=1}^{n} \lambda_i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \det(A) = \prod_{i=1}^{n} \lambda_i \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">特征值和特征向量的定义及性质。其中 \(\lambda\) 是特征值，\(\mathbf{v}\) 是对应的特征向量，\(\text{tr}(A)\) 是矩阵 \(A\) 的迹。</p>
+                            </div>
+                            
+                            <!-- 线性方程组 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">线性方程组</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ A \mathbf{x} = \mathbf{b} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \mathbf{x} = A^{-1} \mathbf{b} \quad (\text{当} \det(A) \neq 0) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ x_i = \frac{\det(A_i)}{\det(A)} \quad (\text{克拉默法则}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">线性方程组的矩阵表示和求解方法。其中 \(A_i\) 是将矩阵 \(A\) 的第i列替换为向量 \(\mathbf{b}\) 得到的矩阵。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 抽象代数 -->
+                    <section id="abstract-algebra" class="mb-10">
+                        <h2 class="section-title">抽象代数</h2>
+                        <div class="space-y-6">
+                            <!-- 群论基本概念 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">群论基本概念</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \forall a, b, c \in G: (a \cdot b) \cdot c = a \cdot (b \cdot c) \quad (\text{结合律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \exists e \in G: \forall a \in G: e \cdot a = a \cdot e = a \quad (\text{单位元}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a \in G: \exists a^{-1} \in G: a \cdot a^{-1} = a^{-1} \cdot a = e \quad (\text{逆元}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b \in G: a \cdot b = b \cdot a \quad (\text{阿贝尔群}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">群的定义和基本性质。群是一个配备了二元运算的集合，满足结合律、存在单位元和每个元素都有逆元。如果还满足交换律，则称为阿贝尔群。</p>
+                            </div>
+                            
+                            <!-- 环和域 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">环和域</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ (R, +) \text{ 是阿贝尔群} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b, c \in R: (a \cdot b) \cdot c = a \cdot (b \cdot c) \quad (\text{乘法结合律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b, c \in R: a \cdot (b + c) = a \cdot b + a \cdot c \quad (\text{左分配律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b, c \in R: (b + c) \cdot a = b \cdot a + c \cdot a \quad (\text{右分配律}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \forall a, b \in F \setminus \{0\}: a \cdot b^{-1} \in F \quad (\text{域}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">环和域的定义。环是一个配备了两种二元运算（加法和乘法）的集合，满足加法构成阿贝尔群，乘法满足结合律，以及分配律。域是一个乘法交换的环，且每个非零元素都有乘法逆元。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

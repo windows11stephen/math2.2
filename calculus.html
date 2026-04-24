@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微积分公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">微积分分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#differential-calc" class="nav-link active">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>微分学</span>
+                        </a>
+                        <a href="#integral-calc" class="nav-link">
+                            <i class="fa fa-line-chart nav-icon"></i>
+                            <span>积分学</span>
+                        </a>
+                        <a href="#multivariable-calc" class="nav-link">
+                            <i class="fa fa-cubes nav-icon"></i>
+                            <span>多变量微积分</span>
+                        </a>
+                        <a href="#differential-eq" class="nav-link">
+                            <i class="fa fa-sliders nav-icon"></i>
+                            <span>微分方程</span>
+                        </a>
+                        <a href="#vector-calc" class="nav-link">
+                            <i class="fa fa-arrows nav-icon"></i>
+                            <span>矢量微积分</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">微积分公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 微分学 -->
+                    <section id="differential-calc" class="mb-10">
+                        <h2 class="section-title">微分学</h2>
+                        <div class="space-y-6">
+                            <!-- 导数定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">导数定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">函数 \(f(x)\) 在点 \(x\) 处的导数定义为函数值的变化量与自变量变化量之比的极限，当自变量变化量趋近于零时。</p>
+                            </div>
+                            
+                            <!-- 基本导数公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">基本导数公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(c) = 0 \quad (c \text{ 为常数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(x^n) = n x^{n-1} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(e^x) = e^x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(a^x) = a^x \ln a \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\ln x) = \frac{1}{x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\log_a x) = \frac{1}{x \ln a} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\sin x) = \cos x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\cos x) = -\sin x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\tan x) = \sec^2 x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\cot x) = -\csc^2 x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\sec x) = \sec x \tan x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(\csc x) = -\csc x \cot x \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见函数的导数公式，包括常数、幂函数、指数函数、对数函数和三角函数的导数。</p>
+                            </div>
+                            
+                            <!-- 导数运算法则 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">导数运算法则</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(f(x) \pm g(x)) = f'(x) \pm g'(x) \quad (\text{加减法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(cf(x)) = c f'(x) \quad (\text{常数乘法法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(f(x)g(x)) = f'(x)g(x) + f(x)g'(x) \quad (\text{乘法法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}\left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2} \quad (\text{除法法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx}(f(g(x))) = f'(g(x)) \cdot g'(x) \quad (\text{链式法则}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">导数的基本运算法则，包括加减法则、常数乘法法则、乘法法则、除法法则和链式法则。</p>
+                            </div>
+                            
+                            <!-- 高阶导数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">高阶导数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ f''(x) = \frac{d^2f}{dx^2} = \frac{d}{dx}\left(\frac{df}{dx}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f^{(n)}(x) = \frac{d^nf}{dx^n} = \frac{d}{dx}\left(f^{(n-1)}(x)\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d^n}{dx^n}(x^m) = \frac{m!}{(m-n)!}x^{m-n} \quad (m \geq n) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d^n}{dx^n}(e^{ax}) = a^n e^{ax} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d^n}{dx^n}(\sin x) = \sin\left(x + \frac{n\pi}{2}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d^n}{dx^n}(\cos x) = \cos\left(x + \frac{n\pi}{2}\right) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">高阶导数的定义和常见函数的n阶导数公式。高阶导数是对函数连续多次求导的结果。</p>
+                            </div>
+                            
+                            <!-- 微分中值定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">微分中值定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{罗尔定理: } f(a) = f(b) \implies \exists c \in (a,b), f'(c) = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{拉格朗日中值定理: } \exists c \in (a,b), f'(c) = \frac{f(b) - f(a)}{b - a} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{柯西中值定理: } \exists c \in (a,b), \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">微分中值定理是微分学中的重要定理，包括罗尔定理、拉格朗日中值定理和柯西中值定理。这些定理建立了函数在区间上的整体性质与导数在区间内某点的局部性质之间的联系。</p>
+                            </div>
+                            
+                            <!-- 泰勒展开 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">泰勒展开</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1} \quad (\xi \text{ 在 } a \text{ 和 } x \text{ 之间}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">泰勒展开是将函数表示为无穷级数的形式，其中每一项都是函数在某一点的各阶导数与自变量差值的幂次的乘积。\(R_n(x)\) 是余项，表示截断误差。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 积分学 -->
+                    <section id="integral-calc" class="mb-10">
+                        <h2 class="section-title">积分学</h2>
+                        <div class="space-y-6">
+                            <!-- 定积分定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">定积分定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ \int_{a}^{b} f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x_i \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">定积分是函数在区间 \([a, b]\) 上的积分，定义为黎曼和的极限。其中 \(\Delta x_i = x_i - x_{i-1}\) 是分割区间的长度，\(x_i^*\) 是区间 \([x_{i-1}, x_i]\) 中的任意一点。</p>
+                            </div>
+                            
+                            <!-- 基本积分公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">基本积分公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \int c \, dx = cx + C \quad (c \text{ 为常数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int x^n \, dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \frac{1}{x} \, dx = \ln|x| + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int e^x \, dx = e^x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int a^x \, dx = \frac{a^x}{\ln a} + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sin x \, dx = -\cos x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \cos x \, dx = \sin x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \tan x \, dx = -\ln|\cos x| + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \cot x \, dx = \ln|\sin x| + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sec x \, dx = \ln|\sec x + \tan x| + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \csc x \, dx = -\ln|\csc x + \cot x| + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sec^2 x \, dx = \tan x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \csc^2 x \, dx = -\cot x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \frac{1}{\sqrt{1-x^2}} \, dx = \arcsin x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \frac{1}{1+x^2} \, dx = \arctan x + C \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \frac{1}{x\sqrt{x^2-1}} \, dx = \text{arcsec}\,x + C \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见函数的不定积分公式，其中 \(C\) 是积分常数。</p>
+                            </div>
+                            
+                            <!-- 积分运算法则 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积分运算法则</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \int [f(x) \pm g(x)] \, dx = \int f(x) \, dx \pm \int g(x) \, dx \quad (\text{加减法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int cf(x) \, dx = c \int f(x) \, dx \quad (\text{常数乘法法则}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx \quad (\text{区间可加性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_{a}^{b} f(x) \, dx = -\int_{b}^{a} f(x) \, dx \quad (\text{交换上下限}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_{a}^{b} f(x) \, dx = \int_{a}^{b} f(t) \, dt \quad (\text{积分变量替换}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">积分的基本运算法则，包括加减法则、常数乘法法则、区间可加性、交换上下限和积分变量替换。</p>
+                            </div>
+                            
+                            <!-- 微积分基本定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">微积分基本定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \int_{a}^{x} f(t) \, dt = f(x) \quad (\text{第一基本定理}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_{a}^{b} f(x) \, dx = F(b) - F(a) \quad (\text{第二基本定理}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">微积分基本定理建立了微分和积分之间的联系。第一基本定理表明积分上限函数的导数等于被积函数；第二基本定理提供了计算定积分的方法，即找到被积函数的原函数，然后计算原函数在上下限处的差值。</p>
+                            </div>
+                            
+                            <!-- 积分方法 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积分方法</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{换元法: } \int f(g(x))g'(x) \, dx = \int f(u) \, du \quad (u = g(x)) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{分部积分法: } \int u \, dv = uv - \int v \, du \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{三角代换: } \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sqrt{a^2 - x^2} \, dx \quad (x = a\sin\theta) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sqrt{a^2 + x^2} \, dx \quad (x = a\tan\theta) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int \sqrt{x^2 - a^2} \, dx \quad (x = a\sec\theta) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常用的积分方法，包括换元法、分部积分法和三角代换法。这些方法可以将复杂的积分转化为更简单的形式。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 多变量微积分 -->
+                    <section id="multivariable-calc" class="mb-10">
+                        <h2 class="section-title">多变量微积分</h2>
+                        <div class="space-y-6">
+                            <!-- 偏导数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">偏导数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial f}{\partial y} = \lim_{h \to 0} \frac{f(x, y + h) - f(x, y)}{h} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial y^2} = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial y \partial x} = \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">偏导数是多变量函数对其中一个变量的导数，而保持其他变量不变。二阶偏导数包括纯二阶偏导数和混合二阶偏导数。在函数满足一定条件时，混合偏导数相等，即 \(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}\)。</p>
+                            </div>
+                            
+                            <!-- 全微分 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">全微分</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \Delta z \approx \frac{\partial z}{\partial x}\Delta x + \frac{\partial z}{\partial y}\Delta y \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">全微分是多变量函数增量的线性主部，表示函数在各方向上的变化率与自变量变化量的乘积之和。全微分可以用于近似计算函数的增量。</p>
+                            </div>
+                            
+                            <!-- 多元函数积分 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">多元函数积分</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \iint_D f(x, y) \, dA = \iint_D f(x, y) \, dxdy \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \iiint_E f(x, y, z) \, dV = \iiint_E f(x, y, z) \, dxdydz \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \iint_D f(x, y) \, dxdy = \iint_{D'} f(r\cos\theta, r\sin\theta) \, r \, drd\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \iiint_E f(x, y, z) \, dxdydz = \iiint_{E'} f(\rho\sin\phi\cos\theta, \rho\sin\phi\sin\theta, \rho\cos\phi) \, \rho^2\sin\phi \, d\rho d\phi d\theta \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">多元函数积分包括二重积分和三重积分，分别用于计算平面区域和空间区域上的积分。为了简化计算，常使用坐标变换，如极坐标变换和球坐标变换。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>概率统计公式 - 数学公式大全</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+            .formula-title {
+                @apply text-lg font-semibold mb-3 text-gray-800;
+            }
+            .formula-content {
+                @apply bg-gray-50 p-4 rounded-lg mb-3;
+            }
+            .formula-description {
+                @apply text-sm text-gray-600;
+            }
+            .nav-link {
+                @apply flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .nav-link.active {
+                @apply bg-blue-50 text-blue-700 font-medium;
+            }
+            .nav-icon {
+                @apply mr-3 text-blue-500;
+            }
+            .export-btn {
+                @apply inline-flex items-center px-3 py-1 rounded-md text-sm font-medium transition-colors;
+            }
+            .export-btn.pdf {
+                @apply bg-red-100 text-red-700 hover:bg-red-200;
+            }
+            .export-btn.latex {
+                @apply bg-green-100 text-green-700 hover:bg-green-200;
+            }
+            .export-btn.image {
+                @apply bg-purple-100 text-purple-700 hover:bg-purple-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fa fa-superscript text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold">数学公式大全</h1>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 左侧导航 -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">概率统计分类</h2>
+                    <nav class="space-y-1">
+                        <a href="#probability-theory" class="nav-link active">
+                            <i class="fa fa-random nav-icon"></i>
+                            <span>概率理论</span>
+                        </a>
+                        <a href="#probability-distributions" class="nav-link">
+                            <i class="fa fa-bar-chart nav-icon"></i>
+                            <span>概率分布</span>
+                        </a>
+                        <a href="#statistical-inference" class="nav-link">
+                            <i class="fa fa-line-chart nav-icon"></i>
+                            <span>统计推断</span>
+                        </a>
+                        <a href="#multivariate-analysis" class="nav-link">
+                            <i class="fa fa-cubes nav-icon"></i>
+                            <span>多元分析</span>
+                        </a>
+                        <a href="#time-series" class="nav-link">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>时间序列</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold mb-3">导出选项</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="export-btn pdf">
+                                <i class="fa fa-file-pdf-o mr-1"></i> PDF
+                            </button>
+                            <button class="export-btn latex">
+                                <i class="fa fa-code mr-1"></i> LaTeX
+                            </button>
+                            <button class="export-btn image">
+                                <i class="fa fa-file-image-o mr-1"></i> 图片
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 右侧内容 -->
+            <div class="lg:w-3/4">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">概率统计公式</h1>
+                        <div class="flex items-center">
+                            <div class="relative mr-4">
+                                <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                                <button class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-bookmark-o text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 概率理论 -->
+                    <section id="probability-theory" class="mb-10">
+                        <h2 class="section-title">概率理论</h2>
+                        <div class="space-y-6">
+                            <!-- 基本概率公式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">基本概率公式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P(A \cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P(\overline{A}) = 1 - P(A) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P\left(\bigcup_{i=1}^{n} A_i\right) \leq \sum_{i=1}^{n} P(A_i) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P\left(\bigcap_{i=1}^{n} A_i\right) \geq 1 - \sum_{i=1}^{n} P(\overline{A_i}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">基本概率公式，包括并集概率、交集概率、条件概率、补集概率以及布尔不等式。</p>
+                            </div>
+                            
+                            <!-- 贝叶斯定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">贝叶斯定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} \]
+                                    </div>
+                                    <div class="text-center text-lg mt-3">
+                                        \[ P(A_i|B) = \frac{P(B|A_i) \cdot P(A_i)}{\sum_{j=1}^{n} P(B|A_j) \cdot P(A_j)} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">贝叶斯定理描述了在已知某事件B发生的条件下，事件A发生的概率。第二个公式是贝叶斯定理在多个互斥且穷尽的事件A₁, A₂, ..., Aₙ情况下的推广。</p>
+                            </div>
+                            
+                            <!-- 排列组合 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">排列组合</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ P(n,r) = \frac{n!}{(n-r)!} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ C(n,r) = \binom{n}{r} = \frac{n!}{r!(n-r)!} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \binom{n}{r} = \binom{n}{n-r} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \binom{n}{r} + \binom{n}{r-1} = \binom{n+1}{r} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sum_{r=0}^{n} \binom{n}{r} = 2^n \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sum_{r=0}^{n} \binom{n}{r} x^r = (1+x)^n \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">排列组合公式，包括排列数P(n,r)和组合数C(n,r)的定义及性质。</p>
+                            </div>
+                            
+                            <!-- 概率公理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">概率公理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ P(A) \geq 0 \quad (\text{非负性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P(\Omega) = 1 \quad (\text{规范性}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i) \quad (\text{可列可加性}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">概率的三条公理：非负性、规范性和可列可加性。其中Ω是样本空间，A₁, A₂, ...是两两互斥的事件。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 概率分布 -->
+                    <section id="probability-distributions" class="mb-10">
+                        <h2 class="section-title">概率分布</h2>
+                        <div class="space-y-6">
+                            <!-- 离散概率分布 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">离散概率分布</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">二项分布 B(n,p)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ P(X=k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = np, \quad Var(X) = np(1-p) \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">泊松分布 P(λ)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \lambda, \quad Var(X) = \lambda \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">几何分布 Geom(p)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ P(X=k) = (1-p)^{k-1} p \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \frac{1}{p}, \quad Var(X) = \frac{1-p}{p^2} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">超几何分布 Hyper(N,K,n)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ P(X=k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \frac{Kn}{N}, \quad Var(X) = \frac{Kn(N-K)(N-n)}{N^2(N-1)} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见离散概率分布的概率质量函数、期望和方差。</p>
+                            </div>
+                            
+                            <!-- 连续概率分布 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">连续概率分布</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">正态分布 N(μ,σ²)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \mu, \quad Var(X) = \sigma^2 \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">均匀分布 U(a,b)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f(x) = \begin{cases} \frac{1}{b-a}, & a \leq x \leq b \\ 0, & \text{其他} \end{cases} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \frac{a+b}{2}, \quad Var(X) = \frac{(b-a)^2}{12} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">指数分布 Exp(λ)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f(x) = \begin{cases} \lambda e^{-\lambda x}, & x \geq 0 \\ 0, & x < 0 \end{cases} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \frac{1}{\lambda}, \quad Var(X) = \frac{1}{\lambda^2} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">伽马分布 Gamma(α,β)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f(x) = \begin{cases} \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}, & x > 0 \\ 0, & x \leq 0 \end{cases} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = \frac{\alpha}{\beta}, \quad Var(X) = \frac{\alpha}{\beta^2} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">卡方分布 χ²(k)</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f(x) = \begin{cases} \frac{1}{2^{k/2}\Gamma(k/2)} x^{k/2-1} e^{-x/2}, & x > 0 \\ 0, & x \leq 0 \end{cases} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ E[X] = k, \quad Var(X) = 2k \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见连续概率分布的概率密度函数、期望和方差。</p>
+                            </div>
+                            
+                            <!-- 多维概率分布 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">多维概率分布</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">二维正态分布 N(μ₁,μ₂,σ₁²,σ₂²,ρ)</h4>
+                                            <div class="text-center">
+                                                \[ f(x,y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \exp\left\{-\frac{1}{2(1-\rho^2)}\left[\left(\frac{x-\mu_1}{\sigma_1}\right)^2 - 2\rho\left(\frac{x-\mu_1}{\sigma_1}\right)\left(\frac{y-\mu_2}{\sigma_2}\right) + \left(\frac{y-\mu_2}{\sigma_2}\right)^2\right]\right\} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">多项分布 Multinomial(n,p₁,p₂,...,pₖ)</h4>
+                                            <div class="text-center">
+                                                \[ P(X_1=k_1,X_2=k_2,\ldots,X_k=k_k) = \frac{n!}{k_1!k_2!\cdots k_k!} p_1^{k_1}p_2^{k_2}\cdots p_k^{k_k}, \quad \sum_{i=1}^{k} k_i = n \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">边际分布与条件分布</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) dy \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">多维概率分布，包括二维正态分布、多项分布以及边际分布和条件分布的定义。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 统计推断 -->
+                    <section id="statistical-inference" class="mb-10">
+                        <h2 class="section-title">统计推断</h2>
+                        <div class="space-y-6">
+                            <!-- 点估计 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">点估计</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i \quad (\text{样本均值}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2 \quad (\text{样本方差}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \hat{p} = \frac{X}{n} \quad (\text{比例估计}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \hat{\lambda} = \bar{X} \quad (\text{泊松参数估计}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见参数的点估计方法，包括样本均值、样本方差、比例估计和泊松参数估计。</p>
+                            </div>
+                            
+                            <!-- 区间估计 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">区间估计</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">均值的置信区间（σ已知）</h4>
+                                            <div class="text-center">
+                                                \[ \bar{X} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">均值的置信区间（σ未知）</h4>
+                                            <div class="text-center">
+                                                \[ \bar{X} \pm t_{\alpha/2,n-1} \frac{S}{\sqrt{n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">比例的置信区间</h4>
+                                            <div class="text-center">
+                                                \[ \hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">方差的置信区间</h4>
+                                            <div class="text-center">
+                                                \[ \left( \frac{(n-1)S^2}{\chi^2_{\alpha/2,n-1}}, \frac{(n-1)S^2}{\chi^2_{1-\alpha/2,n-1}} \right) \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见参数的区间估计方法，包括均值、比例和方差的置信区间。</p>
+                            </div>
+                            
+                            <!-- 假设检验 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">假设检验</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">均值检验（σ已知）</h4>
+                                            <div class="text-center">
+                                                \[ Z = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">均值检验（σ未知）</h4>
+                                            <div class="text-center">
+                                                \[ t = \frac{\bar{X} - \mu_0}{S/\sqrt{n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">比例检验</h4>
+                                            <div class="text-center">
+                                                \[ Z = \frac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">方差检验</h4>
+                                            <div class="text-center">
+                                                \[ \chi^2 = \frac{(n-1)S^2}{\sigma_0^2} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">两个均值之差的检验（独立样本）</h4>
+                                            <div class="text-center">
+                                                \[ t = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1 - \mu_2)}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \]
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                \[ S_p = \sqrt{\frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2}} \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见参数的假设检验方法，包括均值、比例、方差的检验统计量以及两个均值之差的检验。</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa fa-envelope mr-2"></i> contact@mathformulas.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fa fa-phone mr-2"></i> +86 123 4567 8901
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 数学公式大全. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+            
+            // 导航链接点击事件
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动状态到当前链接
+                    this.classList.add('active');
+                    
+                    // 滚动到对应的部分
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导出按钮点击事件
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('导出功能正在开发中，敬请期待！');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

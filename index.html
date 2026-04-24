@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学公式大全 - 全面的数学公式参考平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- KaTeX支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2b6cb0',
+                        accent: '#4299e1',
+                        light: '#ebf8ff',
+                        dark: '#2d3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        math: ['Cambria Math', 'STIX Two Math', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .formula-card {
+                @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .category-link {
+                @apply flex items-center p-4 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:text-blue-700;
+            }
+            .category-icon {
+                @apply mr-4 text-blue-500 text-xl;
+            }
+            .section-title {
+                @apply text-2xl md:text-3xl font-bold text-primary mb-6 pb-2 border-b-2 border-blue-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fa fa-superscript text-2xl mr-3"></i>
+                <h1 class="text-xl md:text-2xl font-bold">数学公式大全</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200 transition-colors">首页</a>
+                <a href="#categories" class="hover:text-blue-200 transition-colors">分类</a>
+                <a href="#about" class="hover:text-blue-200 transition-colors">关于</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 欢迎区域 -->
+        <section class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">欢迎使用数学公式大全(豆包AI辅助生成)</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                这是一个全面的数学公式参考平台，包含了从基础数学到高级数学的各类公式，按不同数学分支进行分类整理，方便您快速查找和使用。
+            </p>
+            <div class="mt-8">
+                <div class="relative max-w-xl mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色功能 -->
+        <section class="mb-12">
+            <h2 class="section-title text-center">特色功能</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="formula-card">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fa fa-sitemap"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">分类清晰</h3>
+                    <p class="text-gray-600">按数学分支和应用领域进行多级分类，方便您快速定位所需公式。</p>
+                </div>
+                <div class="formula-card">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fa fa-superscript"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">专业排版</h3>
+                    <p class="text-gray-600">使用LaTeX渲染，确保公式显示准确美观，提供最佳阅读体验。</p>
+                </div>
+                <div class="formula-card">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fa fa-download"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">便捷导出</h3>
+                    <p class="text-gray-600">支持将公式导出为图片、LaTeX代码或MathML格式，方便您在其他地方使用。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公式分类 -->
+        <section id="categories" class="mb-12">
+            <h2 class="section-title">数学公式分类</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <!-- 代数 -->
+                <a href="algebra.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">代数</h3>
+                        <p class="text-sm text-gray-500">包括基础代数、线性代数、抽象代数等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 几何 -->
+                <a href="geometry.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-square-o"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">几何</h3>
+                        <p class="text-sm text-gray-500">包括欧氏几何、解析几何、微分几何等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 微积分 -->
+                <a href="calculus.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-area-chart"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">微积分</h3>
+                        <p class="text-sm text-gray-500">包括微分学、积分学、多变量微积分等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 三角函数 -->
+                <a href="trigonometry.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-circle-o"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">三角函数</h3>
+                        <p class="text-sm text-gray-500">包括三角函数公式、恒等式、图像等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 概率统计 -->
+                <a href="probability.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-random"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">概率统计</h3>
+                        <p class="text-sm text-gray-500">包括概率理论、统计分析、随机过程等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 数论 -->
+                <a href="number-theory.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-sort-numeric-asc"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">数论</h3>
+                        <p class="text-sm text-gray-500">包括初等数论、解析数论、代数数论等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 离散数学 -->
+                <a href="discrete.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-th"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">离散数学</h3>
+                        <p class="text-sm text-gray-500">包括集合论、图论、组合数学等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+                
+                <!-- 复变函数 -->
+                <a href="complex.html" class="category-link">
+                    <div class="category-icon">
+                        <i class="fa fa-compress"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">复变函数</h3>
+                        <p class="text-sm text-gray-500">包括复数理论、解析函数、复积分等</p>
+                    </div>
+                    <i class="fa fa-arrow-right ml-auto text-gray-400"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 热门公式 -->
+        <section class="mb-12">
+            <h2 class="section-title">热门公式</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                <!-- 二次公式 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">二次公式</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">用于求解二次方程 \(ax^2 + bx + c = 0\) 的根</p>
+                </div>
+                
+                <!-- 勾股定理 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">勾股定理</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ a^2 + b^2 = c^2 \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">直角三角形中，两直角边的平方和等于斜边的平方</p>
+                </div>
+                
+                <!-- 欧拉公式 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">欧拉公式</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ e^{i\theta} = \cos\theta + i\sin\theta \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">复数指数函数与三角函数之间的关系</p>
+                </div>
+                
+                <!-- 泰勒展开 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">泰勒展开</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">将函数表示为无穷级数的形式</p>
+                </div>
+                
+                <!-- 高斯分布 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">高斯分布</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">正态分布的概率密度函数</p>
+                </div>
+                
+                <!-- 微积分基本定理 -->
+                <div class="formula-card">
+                    <h3 class="text-lg font-semibold mb-3">微积分基本定理</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-3">
+                        <div class="text-center text-xl">
+                            \[ \int_{a}^{b} f'(x) dx = f(b) - f(a) \]
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">连接微分和积分的重要定理</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="mb-12">
+            <h2 class="section-title">关于我们</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-gray-600 mb-4">
+                    数学公式大全是一个致力于为学生、教师、工程师和科研人员提供全面数学公式参考的平台。我们的目标是整理和呈现各个数学分支的重要公式，帮助用户更高效地学习和应用数学知识。
+                </p>
+                <p class="text-gray-600 mb-4">
+                    本平台提供的公式涵盖了从基础数学到高级数学的各个领域，包括代数、几何、微积分、三角函数、概率统计等。所有公式都经过精心整理和验证，确保准确性和实用性。
+                </p>
+                <p class="text-gray-600">
+                    如果您有任何建议或发现公式错误，请随时与我们联系。我们将不断完善和更新内容，为用户提供更好的服务。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">数学公式大全</h3>
+                    <p class="text-gray-400">
+                        全面的数学公式参考平台，为您提供各个数学分支的重要公式。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#categories" class="text-gray-400 hover:text-white transition-colors">公式分类</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 Minecraft Shop Store.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 渲染页面上的所有数学公式
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
