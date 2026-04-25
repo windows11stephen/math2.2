@@ -608,6 +608,186 @@
                             </div>
                         </div>
                     </section>
+                    
+                    <!-- 反三角函数 -->
+                    <section id="inverse-trig" class="mb-10">
+                        <h2 class="section-title">反三角函数</h2>
+                        <div class="space-y-6">
+                            <!-- 反三角函数定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">反三角函数定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ y = \arcsin x \iff x = \sin y, \quad y \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right] \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ y = \arccos x \iff x = \cos y, \quad y \in [0, \pi] \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ y = \arctan x \iff x = \tan y, \quad y \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ y = \arccot x \iff x = \cot y, \quad y \in (0, \pi) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">反三角函数的定义，它们是三角函数的反函数，用于求解给定三角函数值对应的角度。</p>
+                            </div>
+                            
+                            <!-- 反三角函数性质 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">反三角函数性质</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \arcsin x + \arccos x = \frac{\pi}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arctan x + \arccot x = \frac{\pi}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arcsin(-x) = -\arcsin x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arccos(-x) = \pi - \arccos x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arctan(-x) = -\arctan x \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">反三角函数的基本性质，包括互补关系和奇偶性。</p>
+                            </div>
+                            
+                            <!-- 反三角函数导数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">反三角函数导数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \arcsin x = \frac{1}{\sqrt{1-x^2}} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \arccos x = -\frac{1}{\sqrt{1-x^2}} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \arctan x = \frac{1}{1+x^2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \arccot x = -\frac{1}{1+x^2} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">反三角函数的导数公式，这些公式在微积分中有重要应用。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 双曲函数 -->
+                    <section id="hyperbolic-functions" class="mb-10">
+                        <h2 class="section-title">双曲函数</h2>
+                        <div class="space-y-6">
+                            <!-- 双曲函数定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">双曲函数定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sinh x = \frac{e^x - e^{-x}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cosh x = \frac{e^x + e^{-x}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tanh x = \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \coth x = \frac{\cosh x}{\sinh x} = \frac{e^x + e^{-x}}{e^x - e^{-x}} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">双曲函数的定义，它们是基于指数函数的函数，在数学和物理学中有广泛应用。</p>
+                            </div>
+                            
+                            <!-- 双曲恒等式 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">双曲恒等式</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \cosh^2 x - \sinh^2 x = 1 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ 1 - \tanh^2 x = \text{sech}^2 x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \coth^2 x - 1 = \text{csch}^2 x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sinh(x \pm y) = \sinh x \cosh y \pm \cosh x \sinh y \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cosh(x \pm y) = \cosh x \cosh y \pm \sinh x \sinh y \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">双曲函数的基本恒等式，类似于三角函数的恒等式，但有一些重要区别。</p>
+                            </div>
+                            
+                            <!-- 双曲函数导数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">双曲函数导数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \sinh x = \cosh x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \cosh x = \sinh x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \tanh x = \text{sech}^2 x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{d}{dx} \coth x = -\text{csch}^2 x \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">双曲函数的导数公式，这些公式在微积分中有重要应用。</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

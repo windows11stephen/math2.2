@@ -342,6 +342,120 @@
                         </div>
                     </section>
                     
+                    <!-- 微分方程 -->
+                    <section id="differential-eq" class="mb-10">
+                        <h2 class="section-title">微分方程</h2>
+                        <div class="space-y-6">
+                            <!-- 一阶微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">一阶微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{可分离变量: } \frac{dy}{dx} = g(x)h(y) \implies \int \frac{dy}{h(y)} = \int g(x) \, dx \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } \frac{dy}{dx} = F\left(\frac{y}{x}\right) \implies \text{令 } u = \frac{y}{x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{线性方程: } \frac{dy}{dx} + P(x)y = Q(x) \implies y = e^{-\int P(x)dx} \left( \int Q(x)e^{\int P(x)dx} \, dx + C \right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{伯努利方程: } \frac{dy}{dx} + P(x)y = Q(x)y^n \implies \text{令 } z = y^{1-n} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">一阶微分方程的常见类型及其解法，包括可分离变量方程、齐次方程、线性方程和伯努利方程。</p>
+                            </div>
+                            
+                            <!-- 二阶线性微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">二阶线性微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } y'' + P(x)y' + Q(x)y = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{常系数齐次: } y'' + ay' + by = 0 \implies r^2 + ar + b = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{非齐次方程: } y'' + P(x)y' + Q(x)y = f(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{特解求法: 常数变易法、待定系数法} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">二阶线性微分方程的基本形式和解法，包括齐次方程和非齐次方程。对于常系数齐次方程，可以通过特征方程求解；对于非齐次方程，可以使用常数变易法或待定系数法求特解。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 矢量微积分 -->
+                    <section id="vector-calc" class="mb-10">
+                        <h2 class="section-title">矢量微积分</h2>
+                        <div class="space-y-6">
+                            <!-- 矢量场 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">矢量场</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{梯度: } \nabla f = \frac{\partial f}{\partial x}\mathbf{i} + \frac{\partial f}{\partial y}\mathbf{j} + \frac{\partial f}{\partial z}\mathbf{k} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{散度: } \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{旋度: } \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的基本概念，包括梯度、散度和旋度。梯度表示标量场的最大变化率方向；散度表示矢量场的源或汇；旋度表示矢量场的旋转程度。</p>
+                            </div>
+                            
+                            <!-- 积分定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积分定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{格林公式: } \oint_C P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{高斯公式: } \oiint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E \nabla \cdot \mathbf{F} \, dV \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{斯托克斯公式: } \oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的重要积分定理，包括格林公式、高斯公式和斯托克斯公式。这些定理建立了区域上的积分与边界上的积分之间的联系。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
                     <!-- 积分学 -->
                     <section id="integral-calc" class="mb-10">
                         <h2 class="section-title">积分学</h2>
@@ -511,6 +625,120 @@
                         </div>
                     </section>
                     
+                    <!-- 微分方程 -->
+                    <section id="differential-eq" class="mb-10">
+                        <h2 class="section-title">微分方程</h2>
+                        <div class="space-y-6">
+                            <!-- 一阶微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">一阶微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{可分离变量: } \frac{dy}{dx} = g(x)h(y) \implies \int \frac{dy}{h(y)} = \int g(x) \, dx \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } \frac{dy}{dx} = F\left(\frac{y}{x}\right) \implies \text{令 } u = \frac{y}{x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{线性方程: } \frac{dy}{dx} + P(x)y = Q(x) \implies y = e^{-\int P(x)dx} \left( \int Q(x)e^{\int P(x)dx} \, dx + C \right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{伯努利方程: } \frac{dy}{dx} + P(x)y = Q(x)y^n \implies \text{令 } z = y^{1-n} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">一阶微分方程的常见类型及其解法，包括可分离变量方程、齐次方程、线性方程和伯努利方程。</p>
+                            </div>
+                            
+                            <!-- 二阶线性微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">二阶线性微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } y'' + P(x)y' + Q(x)y = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{常系数齐次: } y'' + ay' + by = 0 \implies r^2 + ar + b = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{非齐次方程: } y'' + P(x)y' + Q(x)y = f(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{特解求法: 常数变易法、待定系数法} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">二阶线性微分方程的基本形式和解法，包括齐次方程和非齐次方程。对于常系数齐次方程，可以通过特征方程求解；对于非齐次方程，可以使用常数变易法或待定系数法求特解。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 矢量微积分 -->
+                    <section id="vector-calc" class="mb-10">
+                        <h2 class="section-title">矢量微积分</h2>
+                        <div class="space-y-6">
+                            <!-- 矢量场 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">矢量场</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{梯度: } \nabla f = \frac{\partial f}{\partial x}\mathbf{i} + \frac{\partial f}{\partial y}\mathbf{j} + \frac{\partial f}{\partial z}\mathbf{k} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{散度: } \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{旋度: } \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的基本概念，包括梯度、散度和旋度。梯度表示标量场的最大变化率方向；散度表示矢量场的源或汇；旋度表示矢量场的旋转程度。</p>
+                            </div>
+                            
+                            <!-- 积分定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积分定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{格林公式: } \oint_C P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{高斯公式: } \oiint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E \nabla \cdot \mathbf{F} \, dV \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{斯托克斯公式: } \oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的重要积分定理，包括格林公式、高斯公式和斯托克斯公式。这些定理建立了区域上的积分与边界上的积分之间的联系。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
                     <!-- 多变量微积分 -->
                     <section id="multivariable-calc" class="mb-10">
                         <h2 class="section-title">多变量微积分</h2>
@@ -597,6 +825,120 @@
                                     </div>
                                 </div>
                                 <p class="formula-description">多元函数积分包括二重积分和三重积分，分别用于计算平面区域和空间区域上的积分。为了简化计算，常使用坐标变换，如极坐标变换和球坐标变换。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 微分方程 -->
+                    <section id="differential-eq" class="mb-10">
+                        <h2 class="section-title">微分方程</h2>
+                        <div class="space-y-6">
+                            <!-- 一阶微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">一阶微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{可分离变量: } \frac{dy}{dx} = g(x)h(y) \implies \int \frac{dy}{h(y)} = \int g(x) \, dx \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } \frac{dy}{dx} = F\left(\frac{y}{x}\right) \implies \text{令 } u = \frac{y}{x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{线性方程: } \frac{dy}{dx} + P(x)y = Q(x) \implies y = e^{-\int P(x)dx} \left( \int Q(x)e^{\int P(x)dx} \, dx + C \right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{伯努利方程: } \frac{dy}{dx} + P(x)y = Q(x)y^n \implies \text{令 } z = y^{1-n} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">一阶微分方程的常见类型及其解法，包括可分离变量方程、齐次方程、线性方程和伯努利方程。</p>
+                            </div>
+                            
+                            <!-- 二阶线性微分方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">二阶线性微分方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{齐次方程: } y'' + P(x)y' + Q(x)y = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{常系数齐次: } y'' + ay' + by = 0 \implies r^2 + ar + b = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{非齐次方程: } y'' + P(x)y' + Q(x)y = f(x) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{特解求法: 常数变易法、待定系数法} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">二阶线性微分方程的基本形式和解法，包括齐次方程和非齐次方程。对于常系数齐次方程，可以通过特征方程求解；对于非齐次方程，可以使用常数变易法或待定系数法求特解。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 矢量微积分 -->
+                    <section id="vector-calc" class="mb-10">
+                        <h2 class="section-title">矢量微积分</h2>
+                        <div class="space-y-6">
+                            <!-- 矢量场 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">矢量场</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{梯度: } \nabla f = \frac{\partial f}{\partial x}\mathbf{i} + \frac{\partial f}{\partial y}\mathbf{j} + \frac{\partial f}{\partial z}\mathbf{k} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{散度: } \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{旋度: } \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的基本概念，包括梯度、散度和旋度。梯度表示标量场的最大变化率方向；散度表示矢量场的源或汇；旋度表示矢量场的旋转程度。</p>
+                            </div>
+                            
+                            <!-- 积分定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">积分定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \text{格林公式: } \oint_C P\,dx + Q\,dy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{高斯公式: } \oiint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E \nabla \cdot \mathbf{F} \, dV \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{斯托克斯公式: } \oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">矢量微积分中的重要积分定理，包括格林公式、高斯公式和斯托克斯公式。这些定理建立了区域上的积分与边界上的积分之间的联系。</p>
                             </div>
                         </div>
                     </section>

@@ -481,6 +481,207 @@
                             </div>
                         </div>
                     </section>
+                    
+                    <!-- 丢番图方程 -->
+                    <section id="diophantine-equations" class="mb-10">
+                        <h2 class="section-title">丢番图方程</h2>
+                        <div class="space-y-6">
+                            <!-- 一次丢番图方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">一次丢番图方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">方程形式</h4>
+                                            <div class="text-center">
+                                                \[ ax + by = c \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">解的存在性</h4>
+                                            <div class="text-center">
+                                                \[ \text{方程有整数解} \iff \gcd(a,b) \mid c \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">通解公式</h4>
+                                            <div class="text-center">
+                                                \[ x = x_0 + \frac{b}{\gcd(a,b)} t, \quad y = y_0 - \frac{a}{\gcd(a,b)} t, \quad t \in \mathbb{Z} \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">一次丢番图方程ax + by = c的求解理论，包括解的存在性条件和通解公式，其中(x₀,y₀)是方程的一个特解。</p>
+                            </div>
+                            
+                            <!-- 佩尔方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">佩尔方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">方程形式</h4>
+                                            <div class="text-center">
+                                                \[ x^2 - Dy^2 = 1 \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">基本解与通解</h4>
+                                            <div class="text-center">
+                                                \[ (x_n + y_n\sqrt{D}) = (x_1 + y_1\sqrt{D})^n, \quad n \in \mathbb{N} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">示例：Pell(2)</h4>
+                                            <div class="text-center">
+                                                \[ x^2 - 2y^2 = 1, \quad \text{基本解: } (3,2), \text{ 下一个解: } (17,12) \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">佩尔方程x² - Dy² = 1是一类重要的二次丢番图方程，当D是正非平方整数时，方程有无穷多组正整数解。</p>
+                            </div>
+                            
+                            <!-- 费马大定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">费马大定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center text-xl">
+                                        \[ x^n + y^n = z^n \]
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        \[ \text{当 } n > 2 \text{ 时，没有正整数解} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">费马大定理是数论中最著名的定理之一，由安德鲁·怀尔斯于1994年证明。它指出，当n>2时，方程xⁿ + yⁿ = zⁿ没有正整数解。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 解析数论 -->
+                    <section id="analytic-number-theory" class="mb-10">
+                        <h2 class="section-title">解析数论</h2>
+                        <div class="space-y-6">
+                            <!-- 黎曼ζ函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">黎曼ζ函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">定义</h4>
+                                            <div class="text-center">
+                                                \[ \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \text{Re}(s) > 1 \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">欧拉乘积公式</h4>
+                                            <div class="text-center">
+                                                \[ \zeta(s) = \prod_{p \text{ 素数}} \frac{1}{1 - p^{-s}}, \quad \text{Re}(s) > 1 \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">特殊值</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ \zeta(2) = \frac{\pi^2}{6} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ \zeta(4) = \frac{\pi^4}{90} \]
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">黎曼ζ函数是解析数论中最重要的函数之一，它与素数分布有着密切的关系。</p>
+                            </div>
+                            
+                            <!-- 素数定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">素数定理</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">渐近公式</h4>
+                                            <div class="text-center">
+                                                \[ \pi(x) \sim \frac{x}{\ln x} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">更精确的近似</h4>
+                                            <div class="text-center">
+                                                \[ \pi(x) \sim \text{Li}(x) = \int_{2}^{x} \frac{dt}{\ln t} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">误差估计</h4>
+                                            <div class="text-center">
+                                                \[ \pi(x) = \text{Li}(x) + O(x e^{-c\sqrt{\ln x}}) \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">素数定理描述了素数分布的渐近行为，它指出小于等于x的素数个数π(x)近似等于x/ln x。</p>
+                            </div>
+                            
+                            <!-- 狄利克雷L函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">狄利克雷L函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">定义</h4>
+                                            <div class="text-center">
+                                                \[ L(s, \chi) = \sum_{n=1}^{\infty} \frac{\chi(n)}{n^s}, \quad \text{Re}(s) > 1 \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">欧拉乘积公式</h4>
+                                            <div class="text-center">
+                                                \[ L(s, \chi) = \prod_{p \text{ 素数}} \frac{1}{1 - \chi(p)p^{-s}}, \quad \text{Re}(s) > 1 \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">狄利克雷特征</h4>
+                                            <div class="text-center">
+                                                \[ \chi: \mathbb{Z} \to \mathbb{C}, \quad \chi(mn) = \chi(m)\chi(n), \quad \chi(m+kq) = \chi(m) \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">狄利克雷L函数是黎曼ζ函数的推广，它与算术数列中的素数分布有关。</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

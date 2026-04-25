@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>几何公式 - 数学公式大全</title>
+    <title>函数公式 - 数学公式大全</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -99,27 +99,27 @@
             <!-- 左侧导航 -->
             <aside class="lg:w-1/4">
                 <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
-                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">几何分类</h2>
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">函数分类</h2>
                     <nav class="space-y-1">
-                        <a href="#euclidean-geometry" class="nav-link active">
-                            <i class="fa fa-square-o nav-icon"></i>
-                            <span>欧氏几何</span>
+                        <a href="#elementary-functions" class="nav-link active">
+                            <i class="fa fa-calculator nav-icon"></i>
+                            <span>初等函数</span>
                         </a>
-                        <a href="#analytic-geometry" class="nav-link">
-                            <i class="fa fa-line-chart nav-icon"></i>
-                            <span>解析几何</span>
+                        <a href="#special-functions" class="nav-link">
+                            <i class="fa fa-star nav-icon"></i>
+                            <span>特殊函数</span>
                         </a>
-                        <a href="#differential-geometry" class="nav-link">
-                            <i class="fa fa-area-chart nav-icon"></i>
-                            <span>微分几何</span>
+                        <a href="#function-properties" class="nav-link">
+                            <i class="fa fa-list nav-icon"></i>
+                            <span>函数性质</span>
                         </a>
-                        <a href="#projective-geometry" class="nav-link">
-                            <i class="fa fa-picture-o nav-icon"></i>
-                            <span>射影几何</span>
-                        </a>
-                        <a href="#topology" class="nav-link">
+                        <a href="#multivariable-functions" class="nav-link">
                             <i class="fa fa-cubes nav-icon"></i>
-                            <span>拓扑学</span>
+                            <span>多元函数</span>
+                        </a>
+                        <a href="#complex-functions" class="nav-link">
+                            <i class="fa fa-compress nav-icon"></i>
+                            <span>复变函数</span>
                         </a>
                     </nav>
                     
@@ -144,7 +144,7 @@
             <div class="lg:w-3/4">
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
-                        <h1 class="text-2xl md:text-3xl font-bold text-primary">几何公式</h1>
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">函数公式</h1>
                         <div class="flex items-center">
                             <div class="relative mr-4">
                                 <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
@@ -158,400 +158,280 @@
                         </div>
                     </div>
                     
-                    <!-- 欧氏几何 -->
-                    <section id="euclidean-geometry" class="mb-10">
-                        <h2 class="section-title">欧氏几何</h2>
+                    <!-- 初等函数 -->
+                    <section id="elementary-functions" class="mb-10">
+                        <h2 class="section-title">初等函数</h2>
                         <div class="space-y-6">
-                            <!-- 平面图形面积 -->
+                            <!-- 幂函数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">平面图形面积</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ \text{三角形: } A = \frac{1}{2}bh \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{矩形: } A = lw \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{正方形: } A = s^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{平行四边形: } A = bh \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{梯形: } A = \frac{1}{2}(a+b)h \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{圆: } A = \pi r^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{椭圆: } A = \pi ab \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{扇形: } A = \frac{1}{2}r^2\theta \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">常见平面图形的面积公式，其中 \(b\) 为底，\(h\) 为高，\(l\) 为长，\(w\) 为宽，\(s\) 为边长，\(r\) 为半径，\(a,b\) 为半轴长，\(\theta\) 为圆心角（弧度）。</p>
-                            </div>
-                            
-                            <!-- 立体图形体积 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">立体图形体积</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ \text{长方体: } V = lwh \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{正方体: } V = s^3 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{圆柱体: } V = \pi r^2h \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{圆锥体: } V = \frac{1}{3}\pi r^2h \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{球体: } V = \frac{4}{3}\pi r^3 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{棱锥体: } V = \frac{1}{3}Bh \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{椭球体: } V = \frac{4}{3}\pi abc \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{圆台: } V = \frac{1}{3}\pi h(r^2 + Rr + R^2) \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">常见立体图形的体积公式，其中 \(l\) 为长，\(w\) 为宽，\(h\) 为高，\(s\) 为边长，\(r\) 为底面半径，\(R\) 为顶面半径，\(B\) 为底面积，\(a,b,c\) 为半轴长。</p>
-                            </div>
-                            
-                            <!-- 勾股定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">勾股定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="text-center text-xl">
-                                        \[ a^2 + b^2 = c^2 \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">勾股定理（毕达哥拉斯定理）：在直角三角形中，两直角边（\(a\) 和 \(b\)）的平方和等于斜边（\(c\)）的平方。</p>
-                            </div>
-                            
-                            <!-- 三角形定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">三角形定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{正弦定理: } \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{余弦定理: } c^2 = a^2 + b^2 - 2ab\cos C \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{面积公式: } A = \frac{1}{2}ab\sin C = \frac{1}{2}bc\sin A = \frac{1}{2}ac\sin B \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{海伦公式: } A = \sqrt{s(s-a)(s-b)(s-c)}, \text{ 其中 } s = \frac{a+b+c}{2} \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">三角形的重要定理，其中 \(a,b,c\) 为三角形的边长，\(A,B,C\) 分别为对应边的对角，\(R\) 为外接圆半径，\(s\) 为半周长。</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- 解析几何 -->
-                    <section id="analytic-geometry" class="mb-10">
-                        <h2 class="section-title">解析几何</h2>
-                        <div class="space-y-6">
-                            <!-- 坐标系 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">坐标系</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{笛卡尔坐标: } (x, y, z) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{极坐标: } (r, \theta), \text{ 其中 } x = r\cos\theta, y = r\sin\theta \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{柱坐标: } (r, \theta, z), \text{ 其中 } x = r\cos\theta, y = r\sin\theta \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{球坐标: } (r, \theta, \phi), \text{ 其中 } x = r\sin\phi\cos\theta, y = r\sin\phi\sin\theta, z = r\cos\phi \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">常见坐标系及其转换关系，其中 \(r\) 为径向距离，\(\theta\) 为方位角，\(\phi\) 为极角。</p>
-                            </div>
-                            
-                            <!-- 直线和平面 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">直线和平面</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{直线点斜式: } y - y_0 = m(x - x_0) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{直线截距式: } \frac{x}{a} + \frac{y}{b} = 1 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{直线一般式: } Ax + By + C = 0 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{平面一般式: } Ax + By + Cz + D = 0 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{平面点法式: } A(x - x_0) + B(y - y_0) + C(z - z_0) = 0 \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">直线和平面的各种表示形式，其中 \(m\) 为斜率，\((x_0, y_0, z_0)\) 为点坐标，\(a,b\) 为截距，\(A,B,C,D\) 为常数。</p>
-                            </div>
-                            
-                            <!-- 二次曲线 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">二次曲线</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{圆: } (x - h)^2 + (y - k)^2 = r^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{椭圆: } \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{双曲线: } \frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1 \text{ 或 } \frac{(y - k)^2}{a^2} - \frac{(x - h)^2}{b^2} = 1 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{抛物线: } y = a(x - h)^2 + k \text{ 或 } x = a(y - k)^2 + h \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">二次曲线的标准方程，其中 \((h, k)\) 为中心或顶点坐标，\(a,b\) 为半轴长，\(r\) 为半径。</p>
-                            </div>
-                            
-                            <!-- 距离公式 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">距离公式</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{两点间距离: } d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{点到直线距离: } d = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{点到平面距离: } d = \frac{|Ax_0 + By_0 + Cz_0 + D|}{\sqrt{A^2 + B^2 + C^2}} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{两平行线距离: } d = \frac{|C_2 - C_1|}{\sqrt{A^2 + B^2}} \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">各种距离公式，其中 \((x_0, y_0, z_0)\) 为点坐标，\(Ax + By + Cz + D = 0\) 为平面方程，\(Ax + By + C = 0\) 为直线方程。</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- 微分几何 -->
-                    <section id="differential-geometry" class="mb-10">
-                        <h2 class="section-title">微分几何</h2>
-                        <div class="space-y-6">
-                            <!-- 曲线几何 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">曲线几何</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{弧长: } s = \int_{a}^{b} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} dt \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{曲率: } \kappa = \frac{|\mathbf{T}'(t)|}{|\mathbf{r}'(t)|} = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{挠率: } \tau = \frac{(\mathbf{r}'(t) \times \mathbf{r}''(t)) \cdot \mathbf{r}'''(t)}{|\mathbf{r}'(t) \times \mathbf{r}''(t)|^2} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{法向量: } \mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{副法向量: } \mathbf{B}(t) = \mathbf{T}(t) \times \mathbf{N}(t) \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">空间曲线的微分几何量，其中 \(\mathbf{r}(t)\) 为曲线的参数方程，\(\mathbf{T}(t)\) 为单位切向量，\(\kappa\) 为曲率，\(\tau\) 为挠率。</p>
-                            </div>
-                            
-                            <!-- 曲面几何 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">曲面几何</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \text{第一基本形式: } I = E du^2 + 2F du dv + G dv^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{第二基本形式: } II = L du^2 + 2M du dv + N dv^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{高斯曲率: } K = \frac{LN - M^2}{EG - F^2} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{平均曲率: } H = \frac{EN - 2FM + GL}{2(EG - F^2)} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{法曲率: } \kappa_n = \frac{II}{I} = \frac{L du^2 + 2M du dv + N dv^2}{E du^2 + 2F du dv + G dv^2} \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">曲面的微分几何量，其中 \(E, F, G\) 为第一基本形式的系数，\(L, M, N\) 为第二基本形式的系数，\(K\) 为高斯曲率，\(H\) 为平均曲率。</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- 射影几何 -->
-                    <section id="projective-geometry" class="mb-10">
-                        <h2 class="section-title">射影几何</h2>
-                        <div class="space-y-6">
-                            <!-- 齐次坐标 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">齐次坐标</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ (x, y) \leftrightarrow (x, y, 1) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (x, y, z) \leftrightarrow \left(\frac{x}{z}, \frac{y}{z}\right) \quad (z \neq 0) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{直线: } ax + by + c = 0 \leftrightarrow [a, b, c] \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \text{点: } (x, y) \leftrightarrow (x, y, 1) \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">射影几何中的齐次坐标表示，它将欧氏空间中的点和直线扩展到射影空间。</p>
-                            </div>
-                            
-                            <!-- 交比 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">交比</h3>
+                                    <h3 class="formula-title">幂函数</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
                                     <div class="text-center">
-                                        \[ (A, B; C, D) = \frac{AC \cdot BD}{AD \cdot BC} \]
+                                        \[ f(x) = x^n \]
                                     </div>
-                                    <div class="text-center mt-4">
-                                        \[ (A, B; C, D) = \frac{(C - A)(D - B)}{(D - A)(C - B)} \]
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="text-center">
+                                            \[ x^m \cdot x^n = x^{m+n} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{x^m}{x^n} = x^{m-n} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (x^m)^n = x^{mn} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ x^0 = 1 \quad (x \neq 0) \]
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">交比是射影几何中的一个基本不变量，它在射影变换下保持不变。</p>
+                                <p class="formula-description">幂函数的基本形式和运算性质。</p>
+                            </div>
+                            
+                            <!-- 指数函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">指数函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        \[ f(x) = a^x \quad (a > 0, a \neq 1) \]
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="text-center">
+                                            \[ a^x \cdot a^y = a^{x+y} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{a^x}{a^y} = a^{x-y} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a^x)^y = a^{xy} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ a^0 = 1 \]
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        \[ e^x = \lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">指数函数的基本形式、运算性质和自然指数函数的定义。</p>
+                            </div>
+                            
+                            <!-- 对数函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">对数函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        \[ f(x) = \log_a x \quad (a > 0, a \neq 1, x > 0) \]
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="text-center">
+                                            \[ \log_a(xy) = \log_a x + \log_a y \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a\left(\frac{x}{y}\right) = \log_a x - \log_a y \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a(x^n) = n\log_a x \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log_a a = 1, \quad \log_a 1 = 0 \]
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        \[ \ln x = \log_e x \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">对数函数的基本形式、运算性质和自然对数函数的定义。</p>
+                            </div>
+                            
+                            <!-- 三角函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">三角函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \sin x = \frac{e^{ix} - e^{-ix}}{2i} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos x = \frac{e^{ix} + e^{-ix}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan x = \frac{\sin x}{\cos x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cot x = \frac{\cos x}{\sin x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sec x = \frac{1}{\cos x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \csc x = \frac{1}{\sin x} \]
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        \[ \sin^2 x + \cos^2 x = 1 \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">三角函数的基本形式和基本恒等式。</p>
+                            </div>
+                            
+                            <!-- 反三角函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">反三角函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \arcsin x + \arccos x = \frac{\pi}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arctan x + \arccot x = \frac{\pi}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arcsin(\sin x) = x \quad (-\frac{\pi}{2} \leq x \leq \frac{\pi}{2}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \arccos(\cos x) = x \quad (0 \leq x \leq \pi) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">反三角函数的基本性质和恒等式。</p>
                             </div>
                         </div>
                     </section>
                     
-                    <!-- 拓扑学 -->
-                    <section id="topology" class="mb-10">
-                        <h2 class="section-title">拓扑学</h2>
+                    <!-- 特殊函数 -->
+                    <section id="special-functions" class="mb-10">
+                        <h2 class="section-title">特殊函数</h2>
                         <div class="space-y-6">
-                            <!-- 基本概念 -->
+                            <!-- 伽马函数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">基本概念</h3>
+                                    <h3 class="formula-title">伽马函数</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
+                                    <div class="text-center">
+                                        \[ \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} dt \quad (\text{Re}(z) > 0) \]
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                         <div class="text-center">
-                                            \[ \text{开集: } U \subseteq X \text{ 满足 } \forall x \in U, \exists \epsilon > 0, B(x, \epsilon) \subseteq U \]
+                                            \[ \Gamma(n+1) = n! \quad (n \in \mathbb{N}) \]
                                         </div>
                                         <div class="text-center">
-                                            \[ \text{闭集: } C \subseteq X \text{ 满足 } X \setminus C \text{ 是开集} \]
+                                            \[ \Gamma(z+1) = z\Gamma(z) \]
                                         </div>
                                         <div class="text-center">
-                                            \[ \text{连续函数: } f: X \to Y \text{ 满足 } f^{-1}(U) \text{ 是开集当且仅当 } U \text{ 是开集} \]
+                                            \[ \Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi} \]
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">拓扑学中的基本概念，包括开集、闭集和连续函数的定义。</p>
+                                <p class="formula-description">伽马函数的定义和基本性质。</p>
                             </div>
                             
-                            <!-- 同伦和同胚 -->
+                            <!-- 贝塔函数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">同伦和同胚</h3>
+                                    <h3 class="formula-title">贝塔函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        \[ B(p,q) = \int_0^1 t^{p-1}(1-t)^{q-1} dt \quad (\text{Re}(p), \text{Re}(q) > 0) \]
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        \[ B(p,q) = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">贝塔函数的定义和与伽马函数的关系。</p>
+                            </div>
+                            
+                            <!-- 贝塞尔函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">贝塞尔函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        \[ x^2 \frac{d^2y}{dx^2} + x \frac{dy}{dx} + (x^2 - \nu^2)y = 0 \quad (\text{贝塞尔方程}) \]
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        \[ J_\nu(x) = \sum_{n=0}^\infty \frac{(-1)^n}{n!\Gamma(n+\nu+1)}\left(\frac{x}{2}\right)^{2n+\nu} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">贝塞尔方程和贝塞尔函数的定义。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 函数性质 -->
+                    <section id="function-properties" class="mb-10">
+                        <h2 class="section-title">函数性质</h2>
+                        <div class="space-y-6">
+                            <!-- 奇偶性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">奇偶性</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ f(-x) = f(x) \quad (\text{偶函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f(-x) = -f(x) \quad (\text{奇函数}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{偶函数图像关于y轴对称} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \text{奇函数图像关于原点对称} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">函数的奇偶性定义及其几何意义。</p>
+                            </div>
+                            
+                            <!-- 周期性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">周期性</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
@@ -559,14 +439,219 @@
                                 <div class="formula-content">
                                     <div class="space-y-3">
                                         <div class="text-center">
-                                            \[ \text{同伦: } f \simeq g \text{ 当且仅当 } \exists H: X \times [0,1] \to Y \text{ 连续，使得 } H(x,0)=f(x), H(x,1)=g(x) \]
+                                            \[ f(x + T) = f(x) \quad (\text{周期函数}) \]
                                         </div>
-                                        <div class="text-center">
-                                            \[ \text{同胚: } f: X \to Y \text{ 是同胚当且仅当 } f \text{ 是双射且 } f \text{ 和 } f^{-1} \text{ 都连续} \]
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                            <div class="text-center">
+                                                \[ \sin(x + 2\pi) = \sin x \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \cos(x + 2\pi) = \cos x \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \tan(x + \pi) = \tan x \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \cot(x + \pi) = \cot x \]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">同伦和同胚是拓扑学中描述空间等价关系的重要概念。</p>
+                                <p class="formula-description">周期函数的定义及常见周期函数的周期。</p>
+                            </div>
+                            
+                            <!-- 单调性 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">单调性</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ x_1 < x_2 \implies f(x_1) \leq f(x_2) \quad (\text{单调递增}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ x_1 < x_2 \implies f(x_1) \geq f(x_2) \quad (\text{单调递减}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(x) \geq 0 \quad (\text{导数非负}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(x) \leq 0 \quad (\text{导数非正}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">函数单调性的定义及判别方法。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 多元函数 -->
+                    <section id="multivariable-functions" class="mb-10">
+                        <h2 class="section-title">多元函数</h2>
+                        <div class="space-y-6">
+                            <!-- 偏导数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">偏导数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h, y) - f(x, y)}{h} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial f}{\partial y} = \lim_{h \to 0} \frac{f(x, y+h) - f(x, y)}{h} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">偏导数的定义及二阶偏导数的表示。</p>
+                            </div>
+                            
+                            <!-- 全微分 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">全微分</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \Delta f \approx \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">全微分的定义及近似计算。</p>
+                            </div>
+                            
+                            <!-- 多元复合函数求导 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">多元复合函数求导</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \frac{dz}{dt} = \frac{\partial z}{\partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt} \quad (z = f(x(t), y(t))) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial z}{\partial s} = \frac{\partial z}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial z}{\partial y}\frac{\partial y}{\partial s} \quad (z = f(x(s,t), y(s,t))) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">多元复合函数的链式法则。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 复变函数 -->
+                    <section id="complex-functions" class="mb-10">
+                        <h2 class="section-title">复变函数</h2>
+                        <div class="space-y-6">
+                            <!-- 复变函数基础 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复变函数基础</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ f(z) = u(x, y) + iv(x, y) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z = x + iy = re^{i\theta} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ e^{i\theta} = \cos\theta + i\sin\theta \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ |z| = \sqrt{x^2 + y^2} = r \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复变函数的表示及复数的表示。</p>
+                            </div>
+                            
+                            <!-- 柯西-黎曼方程 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">柯西-黎曼方程</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(z) = \frac{\partial v}{\partial y} - i\frac{\partial u}{\partial y} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">柯西-黎曼方程是判断复变函数解析的必要充分条件。</p>
+                            </div>
+                            
+                            <!-- 解析函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">解析函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ f(z) \text{ 在区域D内解析} \iff f(z) \text{ 在D内可导} \]
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                            <div class="text-center">
+                                                \[ e^z = e^x(\cos y + i\sin y) \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \sin z = \frac{e^{iz} - e^{-iz}}{2i} \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \cos z = \frac{e^{iz} + e^{-iz}}{2} \]
+                                            </div>
+                                            <div class="text-center">
+                                                \[ \log z = \ln|z| + i\arg z \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">解析函数的定义及常见解析函数。</p>
                             </div>
                         </div>
                     </section>

@@ -565,6 +565,190 @@
                             </div>
                         </div>
                     </section>
+                    
+                    <!-- 多元分析 -->
+                    <section id="multivariate-analysis" class="mb-10">
+                        <h2 class="section-title">多元分析</h2>
+                        <div class="space-y-6">
+                            <!-- 多元正态分布 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">多元正态分布</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="text-center">
+                                        \[ f(\mathbf{x}) = \frac{1}{(2\pi)^{p/2}|\boldsymbol{\Sigma}|^{1/2}} \exp\left\{-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu})\right\} \]
+                                    </div>
+                                </div>
+                                <p class="formula-description">p维多元正态分布的概率密度函数，其中 \( \mathbf{x} \) 是p维随机向量，\( \boldsymbol{\mu} \) 是均值向量，\( \boldsymbol{\Sigma} \) 是协方差矩阵。</p>
+                            </div>
+                            
+                            <!-- 主成分分析 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">主成分分析</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">特征值与特征向量</h4>
+                                            <div class="text-center">
+                                                \[ \boldsymbol{\Sigma} \mathbf{v}_i = \lambda_i \mathbf{v}_i \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">主成分得分</h4>
+                                            <div class="text-center">
+                                                \[ Z_i = \mathbf{v}_i^T (\mathbf{x} - \boldsymbol{\mu}) \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">累计贡献率</h4>
+                                            <div class="text-center">
+                                                \[ \text{累计贡献率} = \frac{\sum_{i=1}^{k} \lambda_i}{\sum_{i=1}^{p} \lambda_i} \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">主成分分析的关键公式，包括特征值与特征向量的求解、主成分得分的计算以及累计贡献率的计算。</p>
+                            </div>
+                            
+                            <!-- 因子分析 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">因子分析</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">因子模型</h4>
+                                            <div class="text-center">
+                                                \[ \mathbf{x} = \boldsymbol{\mu} + \boldsymbol{\Lambda} \mathbf{f} + \boldsymbol{\epsilon} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">协方差矩阵分解</h4>
+                                            <div class="text-center">
+                                                \[ \boldsymbol{\Sigma} = \boldsymbol{\Lambda} \boldsymbol{\Lambda}^T + \boldsymbol{\Psi} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">因子载荷矩阵旋转</h4>
+                                            <div class="text-center">
+                                                \[ \boldsymbol{\Lambda}^* = \boldsymbol{\Lambda} \mathbf{T} \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">因子分析的关键公式，包括因子模型的表达式、协方差矩阵的分解以及因子载荷矩阵的旋转。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 时间序列 -->
+                    <section id="time-series" class="mb-10">
+                        <h2 class="section-title">时间序列</h2>
+                        <div class="space-y-6">
+                            <!-- 平稳性检验 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">平稳性检验</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">ADF检验统计量</h4>
+                                            <div class="text-center">
+                                                \[ \text{ADF} = \frac{\hat{\phi}_1 - 1}{SE(\hat{\phi}_1)} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">KPSS检验统计量</h4>
+                                            <div class="text-center">
+                                                \[ \text{KPSS} = \frac{\sum_{t=1}^{T} S_t^2}{T^2 \hat{\sigma}^2} \]
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                \[ S_t = \sum_{i=1}^{t} \hat{\epsilon}_i \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">时间序列平稳性检验的关键公式，包括ADF检验和KPSS检验的统计量计算。</p>
+                            </div>
+                            
+                            <!-- ARIMA模型 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">ARIMA模型</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">AR(p)模型</h4>
+                                            <div class="text-center">
+                                                \[ X_t = \phi_0 + \phi_1 X_{t-1} + \phi_2 X_{t-2} + \cdots + \phi_p X_{t-p} + \epsilon_t \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">MA(q)模型</h4>
+                                            <div class="text-center">
+                                                \[ X_t = \mu + \epsilon_t + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \cdots + \theta_q \epsilon_{t-q} \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">ARIMA(p,d,q)模型</h4>
+                                            <div class="text-center">
+                                                \[ (1 - \phi_1 B - \cdots - \phi_p B^p)(1 - B)^d X_t = \theta_0 + (1 + \theta_1 B + \cdots + \theta_q B^q) \epsilon_t \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">ARIMA模型的关键公式，包括AR(p)模型、MA(q)模型和ARIMA(p,d,q)模型的表达式，其中B表示滞后算子。</p>
+                            </div>
+                            
+                            <!-- 季节性模型 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">季节性模型</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">SARIMA模型</h4>
+                                            <div class="text-center">
+                                                \[ (1 - \phi_1 B - \cdots - \phi_p B^p)(1 - \Phi_1 B^s - \cdots - \Phi_P B^{sP})(1 - B)^d(1 - B^s)^D X_t = (1 + \theta_1 B + \cdots + \theta_q B^q)(1 + \Theta_1 B^s + \cdots + \Theta_Q B^{sQ}) \epsilon_t \]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">季节性分解</h4>
+                                            <div class="text-center">
+                                                \[ X_t = T_t + S_t + C_t + \epsilon_t \]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">季节性时间序列模型的关键公式，包括SARIMA模型的表达式和时间序列的季节性分解模型。</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

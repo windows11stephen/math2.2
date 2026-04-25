@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>代数公式 - 数学公式大全</title>
+    <title>复变函数公式 - 数学公式大全</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -99,27 +99,27 @@
             <!-- 左侧导航 -->
             <aside class="lg:w-1/4">
                 <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
-                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">代数分类</h2>
+                    <h2 class="text-xl font-bold text-primary mb-4 pb-2 border-b border-gray-200">复变函数分类</h2>
                     <nav class="space-y-1">
-                        <a href="#basic-algebra" class="nav-link active">
+                        <a href="#complex-numbers" class="nav-link active">
                             <i class="fa fa-calculator nav-icon"></i>
-                            <span>基础代数</span>
+                            <span>复数基础</span>
                         </a>
-                        <a href="#linear-algebra" class="nav-link">
-                            <i class="fa fa-table nav-icon"></i>
-                            <span>线性代数</span>
+                        <a href="#complex-functions" class="nav-link">
+                            <i class="fa fa-line-chart nav-icon"></i>
+                            <span>复变函数</span>
                         </a>
-                        <a href="#abstract-algebra" class="nav-link">
+                        <a href="#complex-integration" class="nav-link">
+                            <i class="fa fa-area-chart nav-icon"></i>
+                            <span>复积分</span>
+                        </a>
+                        <a href="#series-expansion" class="nav-link">
                             <i class="fa fa-sitemap nav-icon"></i>
-                            <span>抽象代数</span>
+                            <span>级数展开</span>
                         </a>
-                        <a href="#number-theory" class="nav-link">
-                            <i class="fa fa-sort-numeric-asc nav-icon"></i>
-                            <span>数论</span>
-                        </a>
-                        <a href="#combinatorics" class="nav-link">
-                            <i class="fa fa-random nav-icon"></i>
-                            <span>组合数学</span>
+                        <a href="#residue-theorem" class="nav-link">
+                            <i class="fa fa-magic nav-icon"></i>
+                            <span>留数定理</span>
                         </a>
                     </nav>
                     
@@ -144,7 +144,7 @@
             <div class="lg:w-3/4">
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                     <div class="flex justify-between items-center mb-6">
-                        <h1 class="text-2xl md:text-3xl font-bold text-primary">代数公式</h1>
+                        <h1 class="text-2xl md:text-3xl font-bold text-primary">复变函数公式</h1>
                         <div class="flex items-center">
                             <div class="relative mr-4">
                                 <input type="text" placeholder="搜索公式..." class="w-full md:w-64 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
@@ -158,461 +158,470 @@
                         </div>
                     </div>
                     
-                    <!-- 基础代数 -->
-                    <section id="basic-algebra" class="mb-10">
-                        <h2 class="section-title">基础代数</h2>
+                    <!-- 复数基础 -->
+                    <section id="complex-numbers" class="mb-10">
+                        <h2 class="section-title">复数基础</h2>
                         <div class="space-y-6">
-                            <!-- 二次公式 -->
+                            <!-- 复数表示 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">二次公式</h3>
+                                    <h3 class="formula-title">复数表示</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ z = a + bi \quad (\text{代数形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z = r(\cos\theta + i\sin\theta) \quad (\text{三角形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z = re^{i\theta} \quad (\text{指数形式}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ |z| = r = \sqrt{a^2 + b^2} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的三种表示形式：代数形式、三角形式和指数形式，以及复数的模。</p>
+                            </div>
+                            
+                            <!-- 复数运算 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复数运算</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ (a + bi) + (c + di) = (a + c) + (b + d)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + bi) - (c + di) = (a - c) + (b - d)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ (a + bi)(c + di) = (ac - bd) + (ad + bc)i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{c^2 + d^2} = \frac{ac + bd}{c^2 + d^2} + \frac{bc - ad}{c^2 + d^2}i \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{z_1}{z_2} = \frac{r_1}{r_2} e^{i(\theta_1 - \theta_2)} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的基本运算，包括加减乘除以及用指数形式表示的乘除运算。</p>
+                            </div>
+                            
+                            <!-- 复数的幂与根 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复数的幂与根</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ z^n = r^n e^{in\theta} = r^n(\cos n\theta + i\sin n\theta) \quad (\text{棣莫弗定理}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sqrt[n]{z} = \sqrt[n]{r} e^{i(\theta + 2k\pi)/n}, \quad k = 0, 1, \ldots, n-1 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sqrt[n]{z} = \sqrt[n]{r} \left( \cos\frac{\theta + 2k\pi}{n} + i\sin\frac{\theta + 2k\pi}{n} \right), \quad k = 0, 1, \ldots, n-1 \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复数的幂运算（棣莫弗定理）和开根运算。复数的n次根有n个不同的值。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 复变函数 -->
+                    <section id="complex-functions" class="mb-10">
+                        <h2 class="section-title">复变函数</h2>
+                        <div class="space-y-6">
+                            <!-- 解析函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">解析函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ f(z) = u(x, y) + iv(x, y) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \quad (\text{柯西-黎曼方程}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i\frac{\partial u}{\partial y} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复变函数的实部和虚部表示，以及判断函数解析的柯西-黎曼方程。</p>
+                            </div>
+                            
+                            <!-- 初等复变函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">初等复变函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="text-center">
+                                            \[ e^z = e^x(\cos y + i\sin y) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sin z = \frac{e^{iz} - e^{-iz}}{2i} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cos z = \frac{e^{iz} + e^{-iz}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \sinh z = \frac{e^z - e^{-z}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \cosh z = \frac{e^z + e^{-z}}{2} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \log z = \ln|z| + i\arg z = \ln r + i(\theta + 2k\pi) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ z^a = e^{a\log z} \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \tan z = \frac{\sin z}{\cos z} = \frac{e^{iz} - e^{-iz}}{i(e^{iz} + e^{-iz})} \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">常见的初等复变函数，包括指数函数、三角函数、双曲函数、对数函数和幂函数。</p>
+                            </div>
+                            
+                            <!-- 调和函数 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">调和函数</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \nabla^2 v = \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0 \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ v(x, y) = \int \frac{\partial u}{\partial x} dy + C(x) \quad (\text{共轭调和函数}) \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">调和函数的拉普拉斯方程，以及如何从已知的调和函数求出其共轭调和函数。</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 复积分 -->
+                    <section id="complex-integration" class="mb-10">
+                        <h2 class="section-title">复积分</h2>
+                        <div class="space-y-6">
+                            <!-- 复积分定义 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">复积分定义</h3>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </button>
+                                </div>
+                                <div class="formula-content">
+                                    <div class="space-y-3">
+                                        <div class="text-center">
+                                            \[ \int_C f(z) dz = \lim_{n \to \infty} \sum_{k=1}^{n} f(z_k^*)(z_k - z_{k-1}) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \int_C f(z) dz = \int_C (u + iv)(dx + idy) = \int_C (udx - vdy) + i\int_C (vdx + udy) \]
+                                        </div>
+                                        <div class="text-center">
+                                            \[ \left| \int_C f(z) dz \right| \leq \int_C |f(z)| |dz| \leq M \cdot L \]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="formula-description">复积分的定义、分解为实积分的表达式，以及积分的模长估计。其中M是|f(z)|在路径C上的最大值，L是路径C的长度。</p>
+                            </div>
+                            
+                            <!-- 柯西积分定理 -->
+                            <div class="formula-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="formula-title">柯西积分定理</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
                                     <div class="text-center text-xl">
-                                        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+                                        \[ \oint_C f(z) dz = 0 \]
                                     </div>
+                                    <p class="text-center mt-3">其中f(z)在单连通区域D内解析，C是D内的简单闭曲线</p>
                                 </div>
-                                <p class="formula-description">用于求解二次方程 \(ax^2 + bx + c = 0\) 的根，其中 \(a \neq 0\)。判别式 \(D = b^2 - 4ac\) 决定了根的性质：\(D > 0\) 时有两个不同实根，\(D = 0\) 时有一个重根，\(D < 0\) 时有两个共轭复根。</p>
+                                <p class="formula-description">柯西积分定理：如果f(z)在单连通区域D内解析，那么沿D内的任意简单闭曲线C的积分都等于0。</p>
                             </div>
                             
-                            <!-- 因式分解公式 -->
+                            <!-- 柯西积分公式 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">因式分解公式</h3>
+                                    <h3 class="formula-title">柯西积分公式</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
                                     <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ a^2 - b^2 = (a + b)(a - b) \]
+                                        <div class="text-center text-xl">
+                                            \[ f(a) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - a} dz \]
                                         </div>
                                         <div class="text-center">
-                                            \[ a^3 - b^3 = (a - b)(a^2 + ab + b^2) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ a^3 + b^3 = (a + b)(a^2 - ab + b^2) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (a + b)^2 = a^2 + 2ab + b^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (a - b)^2 = a^2 - 2ab + b^2 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 \]
+                                            \[ f^{(n)}(a) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - a)^{n+1}} dz \]
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">常用的代数因式分解公式，用于简化表达式和解方程。</p>
-                            </div>
-                            
-                            <!-- 二项式定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">二项式定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="text-center text-xl">
-                                        \[ (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k \]
-                                    </div>
-                                    <div class="text-center text-lg mt-3">
-                                        \[ \binom{n}{k} = \frac{n!}{k!(n-k)!} \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">二项式定理描述了二项式的幂展开式，其中 \(\binom{n}{k}\) 是二项式系数，表示从n个元素中选取k个的组合数。</p>
-                            </div>
-                            
-                            <!-- 对数公式 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">对数公式</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ \log_a(xy) = \log_a x + \log_a y \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \log_a\left(\frac{x}{y}\right) = \log_a x - \log_a y \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \log_a(x^n) = n \log_a x \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \log_a x = \frac{\log_b x}{\log_b a} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ a^{\log_a x} = x \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \log_a 1 = 0 \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">对数的基本性质和运算规则，适用于任何底数 \(a > 0, a \neq 1\)。</p>
-                            </div>
-                            
-                            <!-- 指数公式 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">指数公式</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ a^m \cdot a^n = a^{m+n} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \frac{a^m}{a^n} = a^{m-n} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (a^m)^n = a^{mn} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (ab)^n = a^n b^n \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \left(\frac{a}{b}\right)^n = \frac{a^n}{b^n} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ a^0 = 1 \quad (a \neq 0) \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">指数的基本运算规则，适用于任何实数 \(a, b \neq 0\) 和整数 \(m, n\)。</p>
+                                <p class="formula-description">柯西积分公式及其推广，用于计算解析函数在某点的值和各阶导数。其中C是包围点a的简单闭曲线，f(z)在包含C及其内部的区域内解析。</p>
                             </div>
                         </div>
                     </section>
                     
-                    <!-- 线性代数 -->
-                    <section id="linear-algebra" class="mb-10">
-                        <h2 class="section-title">线性代数</h2>
+                    <!-- 级数展开 -->
+                    <section id="series-expansion" class="mb-10">
+                        <h2 class="section-title">级数展开</h2>
                         <div class="space-y-6">
-                            <!-- 矩阵运算 -->
+                            <!-- 幂级数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">矩阵运算</h3>
+                                    <h3 class="formula-title">幂级数</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ (A + B)_{ij} = A_{ij} + B_{ij} \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">幂级数定义</h4>
+                                            <div class="text-center">
+                                                \[ \sum_{n=0}^{\infty} c_n (z - a)^n = c_0 + c_1(z - a) + c_2(z - a)^2 + \cdots \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ (kA)_{ij} = k \cdot A_{ij} \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">收敛半径</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ R = \frac{1}{\limsup_{n \to \infty} \sqrt[n]{|c_n|}} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ R = \lim_{n \to \infty} \left| \frac{c_n}{c_{n+1}} \right| \]
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ (AB)_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ (A^T)_{ij} = A_{ji} \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">阿贝尔定理</h4>
+                                            <div class="text-center">
+                                                \[ \text{若幂级数在 } z_1 \text{ 收敛，则在所有满足 } |z - a| < |z_1 - a| \text{ 的点 } z \text{ 绝对收敛} \]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">矩阵的基本运算，包括加法、标量乘法、矩阵乘法和转置。其中 \(A^T\) 表示矩阵 \(A\) 的转置。</p>
+                                <p class="formula-description">幂级数的定义、收敛半径的计算方法以及阿贝尔定理，这些是研究复变函数级数展开的基础。</p>
                             </div>
                             
-                            <!-- 行列式 -->
+                            <!-- 泰勒级数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">行列式</h3>
+                                    <h3 class="formula-title">泰勒级数</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \det(A) = |A| = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^{n} A_{i,\sigma(i)} \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">泰勒展开式</h4>
+                                            <div class="text-center">
+                                                \[ f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (z - a)^n \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ \det(AB) = \det(A) \det(B) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \det(A^T) = \det(A) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \det(kA) = k^n \det(A) \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">常见函数的泰勒展开</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ \sin z = \sum_{n=0}^{\infty} \frac{(-1)^n z^{2n+1}}{(2n+1)!} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ \cos z = \sum_{n=0}^{\infty} \frac{(-1)^n z^{2n}}{(2n)!} \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ \frac{1}{1 - z} = \sum_{n=0}^{\infty} z^n, \quad |z| < 1 \]
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">行列式的定义和基本性质，其中 \(S_n\) 是n次对称群，\(\text{sgn}(\sigma)\) 是置换 \(\sigma\) 的符号。</p>
+                                <p class="formula-description">泰勒级数展开的公式及其在常见函数中的应用。泰勒级数是解析函数的重要表示形式。</p>
                             </div>
                             
-                            <!-- 特征值和特征向量 -->
+                            <!-- 洛朗级数 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">特征值和特征向量</h3>
+                                    <h3 class="formula-title">洛朗级数</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ A \mathbf{v} = \lambda \mathbf{v} \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">洛朗展开式</h4>
+                                            <div class="text-center">
+                                                \[ f(z) = \sum_{n=-\infty}^{\infty} c_n (z - a)^n = \sum_{n=1}^{\infty} c_{-n} (z - a)^{-n} + \sum_{n=0}^{\infty} c_n (z - a)^n \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ \det(A - \lambda I) = 0 \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">洛朗系数</h4>
+                                            <div class="text-center">
+                                                \[ c_n = \frac{1}{2\pi i} \oint_C \frac{f(z)}{(z - a)^{n+1}} dz, \quad n = 0, \pm 1, \pm 2, \ldots \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ \text{tr}(A) = \sum_{i=1}^{n} A_{ii} = \sum_{i=1}^{n} \lambda_i \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \det(A) = \prod_{i=1}^{n} \lambda_i \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">特征值和特征向量的定义及性质。其中 \(\lambda\) 是特征值，\(\mathbf{v}\) 是对应的特征向量，\(\text{tr}(A)\) 是矩阵 \(A\) 的迹。</p>
-                            </div>
-                            
-                            <!-- 线性方程组 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">线性方程组</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ A \mathbf{x} = \mathbf{b} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \mathbf{x} = A^{-1} \mathbf{b} \quad (\text{当} \det(A) \neq 0) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ x_i = \frac{\det(A_i)}{\det(A)} \quad (\text{克拉默法则}) \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">孤立奇点分类</h4>
+                                            <div class="text-center">
+                                                \[ \text{可去奇点: } c_{-n} = 0 \text{ 对所有 } n \geq 1 \]
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                \[ \text{极点: } c_{-m} \neq 0 \text{ 但 } c_{-n} = 0 \text{ 对所有 } n > m \]
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                \[ \text{本性奇点: } c_{-n} \neq 0 \text{ 对无限多个 } n \]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">线性方程组的矩阵表示和求解方法。其中 \(A_i\) 是将矩阵 \(A\) 的第i列替换为向量 \(\mathbf{b}\) 得到的矩阵。</p>
+                                <p class="formula-description">洛朗级数展开的公式、系数计算方法以及孤立奇点的分类。洛朗级数是研究有孤立奇点的函数的重要工具。</p>
                             </div>
                         </div>
                     </section>
                     
-                    <!-- 抽象代数 -->
-                    <section id="abstract-algebra" class="mb-10">
-                        <h2 class="section-title">抽象代数</h2>
+                    <!-- 留数定理 -->
+                    <section id="residue-theorem" class="mb-10">
+                        <h2 class="section-title">留数定理</h2>
                         <div class="space-y-6">
-                            <!-- 群论基本概念 -->
+                            <!-- 留数定义 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">群论基本概念</h3>
+                                    <h3 class="formula-title">留数定义</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ \forall a, b, c \in G: (a \cdot b) \cdot c = a \cdot (b \cdot c) \quad (\text{结合律}) \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">留数的定义</h4>
+                                            <div class="text-center">
+                                                \[ \text{Res}(f, a) = c_{-1} = \frac{1}{2\pi i} \oint_C f(z) dz \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ \exists e \in G: \forall a \in G: e \cdot a = a \cdot e = a \quad (\text{单位元}) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \forall a \in G: \exists a^{-1} \in G: a \cdot a^{-1} = a^{-1} \cdot a = e \quad (\text{逆元}) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \forall a, b \in G: a \cdot b = b \cdot a \quad (\text{阿贝尔群}) \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">可去奇点的留数</h4>
+                                            <div class="text-center">
+                                                \[ \text{Res}(f, a) = 0 \quad (\text{若 } a \text{ 是可去奇点}) \]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">群的定义和基本性质。群是一个配备了二元运算的集合，满足结合律、存在单位元和每个元素都有逆元。如果还满足交换律，则称为阿贝尔群。</p>
+                                <p class="formula-description">留数的定义及其在可去奇点处的性质。留数是洛朗级数中负一次项的系数，在复积分计算中有重要应用。</p>
                             </div>
                             
-                            <!-- 环和域 -->
+                            <!-- 极点的留数计算 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">环和域</h3>
+                                    <h3 class="formula-title">极点的留数计算</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ (R, +) \text{ 是阿贝尔群} \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">一阶极点</h4>
+                                            <div class="text-center">
+                                                \[ \text{Res}(f, a) = \lim_{z \to a} (z - a)f(z) \]
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                \[ \text{若 } f(z) = \frac{P(z)}{Q(z)}, Q(a) = 0, Q'(a) \neq 0, \text{ 则 } \text{Res}(f, a) = \frac{P(a)}{Q'(a)} \]
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            \[ \forall a, b, c \in R: (a \cdot b) \cdot c = a \cdot (b \cdot c) \quad (\text{乘法结合律}) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \forall a, b, c \in R: a \cdot (b + c) = a \cdot b + a \cdot c \quad (\text{左分配律}) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \forall a, b, c \in R: (b + c) \cdot a = b \cdot a + c \cdot a \quad (\text{右分配律}) \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \forall a, b \in F \setminus \{0\}: a \cdot b^{-1} \in F \quad (\text{域}) \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">m阶极点</h4>
+                                            <div class="text-center">
+                                                \[ \text{Res}(f, a) = \frac{1}{(m-1)!} \lim_{z \to a} \frac{d^{m-1}}{dz^{m-1}} \left[ (z - a)^m f(z) \right] \]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">环和域的定义。环是一个配备了两种二元运算（加法和乘法）的集合，满足加法构成阿贝尔群，乘法满足结合律，以及分配律。域是一个乘法交换的环，且每个非零元素都有乘法逆元。</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- 数论 -->
-                    <section id="number-theory" class="mb-10">
-                        <h2 class="section-title">数论</h2>
-                        <div class="space-y-6">
-                            <!-- 素数定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">素数定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="text-center">
-                                        \[ \pi(x) \sim \frac{x}{\ln x} \]
-                                    </div>
-                                    <div class="text-center mt-4">
-                                        \[ \lim_{x \to \infty} \frac{\pi(x)}{x/\ln x} = 1 \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">素数定理描述了素数分布的渐近行为，其中π(x)表示小于或等于x的素数个数。</p>
+                                <p class="formula-description">极点处留数的计算公式，包括一阶极点和m阶极点的情况。这些公式大大简化了留数的计算。</p>
                             </div>
                             
-                            <!-- 欧拉定理 -->
+                            <!-- 留数定理及其应用 -->
                             <div class="formula-card">
                                 <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">欧拉定理</h3>
+                                    <h3 class="formula-title">留数定理及其应用</h3>
                                     <button class="text-gray-400 hover:text-gray-600">
                                         <i class="fa fa-bookmark-o"></i>
                                     </button>
                                 </div>
                                 <div class="formula-content">
-                                    <div class="text-center">
-                                        \[ a^{\phi(n)} \equiv 1 \pmod{n} \quad (\text{当} \gcd(a,n) = 1) \]
-                                    </div>
-                                    <div class="text-center mt-4">
-                                        \[ \phi(n) = n \prod_{p|n} \left(1 - \frac{1}{p}\right) \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">欧拉定理是费马小定理的推广，其中φ(n)是欧拉函数，表示小于n且与n互质的正整数个数。</p>
-                            </div>
-                            
-                            <!-- 中国剩余定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">中国剩余定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="space-y-3">
-                                        <div class="text-center">
-                                            \[ x \equiv a_1 \pmod{m_1} \]
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">留数定理</h4>
+                                            <div class="text-center">
+                                                \[ \oint_C f(z) dz = 2\pi i \sum_{k=1}^{n} \text{Res}(f, a_k) \]
+                                            </div>
+                                            <p class="text-center mt-2">其中a₁, a₂, ..., aₙ是f(z)在C内部的所有孤立奇点</p>
                                         </div>
-                                        <div class="text-center">
-                                            \[ x \equiv a_2 \pmod{m_2} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \vdots \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ x \equiv a_k \pmod{m_k} \]
-                                        </div>
-                                        <div class="text-center mt-4">
-                                            \[ x \equiv \sum_{i=1}^{k} a_i M_i N_i \pmod{M} \]
+                                        <div>
+                                            <h4 class="text-md font-medium mb-2">实积分计算</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="text-center">
+                                                    \[ \int_{-\infty}^{\infty} R(x) dx = 2\pi i \sum_{k} \text{Res}(R(z), z_k) \]
+                                                </div>
+                                                <div class="text-center">
+                                                    \[ \int_{0}^{2\pi} R(\cos\theta, \sin\theta) d\theta = 2\pi i \sum_{k} \text{Res}(f(z), z_k) \]
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="formula-description">中国剩余定理指出，当m₁, m₂, ..., mₖ两两互质时，同余方程组有唯一解模M = m₁m₂...mₖ。其中Mᵢ = M/mᵢ，Nᵢ是Mᵢ模mᵢ的逆元。</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- 组合数学 -->
-                    <section id="combinatorics" class="mb-10">
-                        <h2 class="section-title">组合数学</h2>
-                        <div class="space-y-6">
-                            <!-- 排列组合 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">排列组合</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="text-center">
-                                            \[ P(n,r) = \frac{n!}{(n-r)!} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ C(n,r) = \binom{n}{r} = \frac{n!}{r!(n-r)!} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \binom{n}{r} = \binom{n}{n-r} \]
-                                        </div>
-                                        <div class="text-center">
-                                            \[ \binom{n}{r} + \binom{n}{r-1} = \binom{n+1}{r} \]
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="formula-description">排列和组合的基本公式。P(n,r)表示从n个不同元素中取出r个元素的排列数，C(n,r)表示组合数。</p>
-                            </div>
-                            
-                            <!-- 二项式定理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">二项式定理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="text-center">
-                                        \[ (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k \]
-                                    </div>
-                                    <div class="text-center mt-4">
-                                        \[ (1 + x)^n = \sum_{k=0}^{n} \binom{n}{k} x^k \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">二项式定理描述了二项式的幂展开式，其中系数是二项式系数。</p>
-                            </div>
-                            
-                            <!-- 容斥原理 -->
-                            <div class="formula-card">
-                                <div class="flex justify-between items-start mb-3">
-                                    <h3 class="formula-title">容斥原理</h3>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </button>
-                                </div>
-                                <div class="formula-content">
-                                    <div class="text-center">
-                                        \[ \left| \bigcup_{i=1}^{n} A_i \right| = \sum_{i=1}^{n} |A_i| - \sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| - \cdots + (-1)^{n+1} |A_1 \cap A_2 \cap \cdots \cap A_n| \]
-                                    </div>
-                                </div>
-                                <p class="formula-description">容斥原理用于计算多个集合的并集的大小，它考虑了集合之间的交集。</p>
+                                <p class="formula-description">留数定理及其在计算实积分中的应用。留数定理是复变函数论中最重要的定理之一，它将复积分的计算转化为留数的计算。</p>
                             </div>
                         </div>
                     </section>
